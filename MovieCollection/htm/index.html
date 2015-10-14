@@ -6,27 +6,42 @@
     <link href='https://fonts.googleapis.com/css?family=Ewert' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../packages/bootstrap/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="../packages/bootstrap/css/bootstrap.min.css" />
+
+    <script src="../js/jquery-1.7.1.min.js"></script>
+    <script src="../js/jquery-ui-1.10.4.min.js"></script>    
+    <script src="../js/main.js"></script>
 </head>
 <body>
-    <div class="movieReelBorder"></div>
-    <div class="movieReel container-fluid">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-1">M</div>
-        <div class="col-lg-1">O</div>
-        <div class="col-lg-1">V</div>
-        <div class="col-lg-1">I</div>
-        <div class="col-lg-1">E</div>
-        <div class="col-lg-1">S</div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-1"></div>
+    <div id="darkDiv" class="hidden"></div>
+    <div id="newMovieDiv" class="hidden">
+        <div id="newMovieHeader">asdfas</div>
+        <div id="newMovieBody">asdfasdf</div>
     </div>
-    <div class="movieReelBorder"></div>
 
-    <div id="main">
-        <h1>TEST</h1>
+    <div id="header">
+        <div class="movieReelBorder"></div>
+        <div class="movieReel container-fluid">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-1">M</div>
+            <div class="col-lg-1">O</div>
+            <div class="col-lg-1">V</div>
+            <div class="col-lg-1">I</div>
+            <div class="col-lg-1">E</div>
+            <div class="col-lg-1">S</div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-1"></div>
+            <div id="newMovie" title="Add New" class="col-lg-1">+</div>
+        </div>
+        <div class="movieReelBorder"></div>
+    </div>
+    <div id="scrollContainer">
+        <div id="content">
+            <div id="main">
+                <h1>TEST</h1>
+            </div>
+        </div>
     </div>
 </body>
 </html>
