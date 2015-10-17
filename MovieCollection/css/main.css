@@ -47,6 +47,23 @@ body {
     display:none;
 }
 
+#closePopUpDiv {
+	padding: 10px;
+}
+
+.closePopUp {
+    font-size: 20px!important;
+    float: right;
+    padding: 6px 8px;
+    cursor: pointer;
+    margin: 5px;
+    background-color: black;
+    border-radius: 100%;
+    border: 4px solid white;
+    box-shadow: 0px 0px 10px 5px #000;
+    color: white;
+}
+
 /********** HEADER CSS **********/
 .movieReelBorder {
 	background-image: url("../img/movieReel.png");
@@ -76,7 +93,7 @@ body {
 	cursor:pointer;
 }
 
-/********** NEW MOVE CSS **********/
+/********** NEW MOVIE CSS **********/
 #newMovieDiv {
 	position:absolute;
 	width:60%;
@@ -84,7 +101,7 @@ body {
     z-index:10;
     left:50%;
 	top: 10%;
-    height: 60%;
+    height: 65%;
 }
 
 #newMovieHeader {
@@ -95,6 +112,7 @@ body {
 }
 
 #newMovieBody {
+	font-family: 'Special Elite', cursive;
 	background-image: url("../img/clapboardBackground.png");
 	background-size:100% 100%;
 	height:100%;
@@ -104,4 +122,106 @@ body {
     border-bottom-right-radius:70px;
     border: 1px solid #AAAAAA;
     border-top: none;
+    padding:20px;
+}
+
+#titleDiv {	
+	border-bottom:2px solid white;
+    width: 100%;
+    position: relative;
+}
+
+#newMovieBody label {
+	color:white;
+	font-size:25px;
+    margin-right:50px;
+    margin-top: 10px;
+}
+
+#newMovieBody label[for="movieTitle"] {
+	position: relative;
+    top: -100px;
+}
+
+#newMovieBody option{
+	background:black;
+}
+
+#newMovieBody textarea,
+#newMovieBody input,
+#newMovieBody select {
+	background-color:transparent;
+	color:white;
+	border:none;
+}
+
+#newMovieBody textarea:focus,
+#newMovieBody input:focus,
+#newMovieBody select:focus {
+	outline:0;
+}
+
+#movieTitle {
+	font-size:70px;
+	resize:none;
+	width:85%;	
+}
+
+#directorDiv {
+	border-bottom:2px solid white;
+    width: 100%;
+    position: relative;
+    padding:15px 0;
+}
+
+#director {
+	width:80%;
+	font-size:40px;
+}
+
+#otherDetails{
+	padding:0;
+	width:100%;
+}
+
+#genre {
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+#middleBox {
+	border-left:2px solid white;
+	border-right:2px solid white;
+}
+
+#year, #rating{
+	font-size: 100px;
+    width: 100%;    
+}
+
+#year {
+	margin-left: 20px;
+}
+
+#rating {
+	margin-left:70px;
+}
+
+#saveMovie {
+	font-size: 25px!important;
+    background-color: black;
+    border-radius: 15px;
+    border: 4px solid white;
+    box-shadow: 0px 0px 7px #000;
+    color: white;
+    text-shadow: 2px 4px 4px #000;
+    cursor:pointer;
+    font-family: 'Special Elite', cursive;
+    padding:10px;
+    float:right;
+    text-decoration: none;
+}
+
+#saveMovie i {
+	padding-right:10px;
 }
