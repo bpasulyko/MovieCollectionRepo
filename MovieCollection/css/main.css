@@ -207,6 +207,21 @@ body {
 	margin-left:70px;
 }
 
+#watchedDiv{
+	margin-top:20px;
+}
+
+#watched {
+	display:inline-block;
+    width:45px;
+    height:45px;
+    margin:-1px 4px 0 0;
+    vertical-align:top;
+    cursor:pointer;
+    color:white;
+    background:black;
+}
+
 #saveMovie {
 	font-size: 25px!important;
     background-color: black;
