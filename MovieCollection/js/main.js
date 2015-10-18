@@ -6,6 +6,7 @@
 /************************************************** FUNCTIONS **************************************************/
 /***************************************************************************************************************/
 function togglePopUp(state) {
+	resetInputs();
 	if (state === "open") {
 	    $("#darkDiv").removeClass("hidden");
     	$("#newMovieDiv").removeClass("hidden");
@@ -35,7 +36,30 @@ function loadAllMovies() {
 }
 
 function loadAllMoviesOnSuccess(response) {
-	debugger;
+	buildMovieHtml(response);
+}
+
+function buildMovieHtml(response) {
+	var sortedList = JSON.parse(response).sort(function compare(a,b) {
+	  if (a.Title < b.Title)
+	    return -1;
+	  if (a.Title > b.Title)
+	    return 1;
+	  return 0;
+	});
+
+	sortedList.forEach(function(movie) {
+		var mainBodyString = getMovieHtmlString(movie);
+		$("#main .container-fluid").append(mainBodyString);
+	});
+}
+
+function getMovieHtmlString(movie) {
+	var mainBodyString = "";
+	mainBodyString += "<div class='col-lg-3 col-sm-3 col-xs-3' data-movieId='" + movie.MovieId + "'>";
+	mainBodyString += "<img src='" + movie.imageURL + "' />";
+	mainBodyString += "</div";
+	return mainBodyString;
 }
 
 function saveMovie() {
@@ -60,8 +84,9 @@ function saveMovie() {
 }
 
 function saveMovieOnSuccess(response) {
-	console.log(response);
 	togglePopUp("close");
+	var mainBodyString = getMovieHtmlString(JSON.parse(response)[0]);
+	$("#main .container-fluid").prepend(mainBodyString);
 }
 
 /************************************************************************************************************/
@@ -79,7 +104,6 @@ $(document).on("click", "#saveMovie", function () {
 /***** GENERAL JQUERY *****/
 $(document).on("click", ".closePopUp", function () {
     togglePopUp("close");
-    resetInputs();
 });
 
 $(document).ready(function () {

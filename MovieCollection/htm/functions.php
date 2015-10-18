@@ -14,7 +14,7 @@
 	  while($movieRow = $getMoviesQueryResult->fetch_assoc()){
       $movieObj = array("MovieId"=>$movieRow['movieId'], "Title"=>$movieRow['Title'], "Director"=>$movieRow['Director'], "Genre"=>$movieRow['Genre'], "Year"=>$movieRow['Year'], "imageURL"=>$movieRow['imageURL'], "Watched"=>$movieRow['Watched'], "LoanedTo"=>$movieRow['LoanedTo'], "IMDBrating"=>$movieRow['IMDBrating']);
           
-		  $retVal[$i] = array("MovieObj"=>$movieObj);
+		  $retVal[$i] = $movieObj;
 		  $i++;
 	  }
     
