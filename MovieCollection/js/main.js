@@ -51,13 +51,13 @@ function buildMovieHtml(response) {
 	sortedList.forEach(function(movie) {
 		var mainBodyString = getMovieHtmlString(movie);
 		$("#main .container-fluid").append(mainBodyString);
+		$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
 	});
 }
 
 function getMovieHtmlString(movie) {
 	var mainBodyString = "";
 	mainBodyString += "<div class='col-lg-3 col-sm-3 col-xs-3' data-movieId='" + movie.MovieId + "'>";
-	mainBodyString += "<img src='" + movie.imageURL + "' />";
 	mainBodyString += "</div";
 	return mainBodyString;
 }
@@ -85,8 +85,10 @@ function saveMovie() {
 
 function saveMovieOnSuccess(response) {
 	togglePopUp("close");
-	var mainBodyString = getMovieHtmlString(JSON.parse(response)[0]);
+	var movie = JSON.parse(response)[0];
+	var mainBodyString = getMovieHtmlString(movie);
 	$("#main .container-fluid").prepend(mainBodyString);
+	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
 }
 
 /************************************************************************************************************/
