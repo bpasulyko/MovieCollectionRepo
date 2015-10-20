@@ -22,6 +22,7 @@ function resetInputs() {
 	$("#genre option").first().prop("selected", "selected");
 	$("#year").val("");
 	$("#rating").val("");
+	$("#newMovieBody label span").remove();
 }
 
 function loadAllMovies() {
@@ -50,16 +51,24 @@ function buildMovieHtml(response) {
 
 	sortedList.forEach(function(movie) {
 		var mainBodyString = getMovieHtmlString(movie);
-		$("#main .container-fluid").append(mainBodyString);
+		$("#content .container-fluid").append(mainBodyString);
 		$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
 	});
 }
 
 function getMovieHtmlString(movie) {
 	var mainBodyString = "";
-	mainBodyString += "<div class='col-lg-3 col-sm-3 col-xs-3' data-movieId='" + movie.MovieId + "'>";
+	mainBodyString += "<div class='col-lg-2 col-sm-2 col-xs-2' data-movieId='" + movie.MovieId + "'>";
 	mainBodyString += "</div";
 	return mainBodyString;
+}
+
+function validateMovieObj(newMovieObj) {
+	return (newMovieObj.Title != "" && 
+			newMovieObj.Director != "" && 
+			newMovieObj.Genre != ". . ." && 
+			(newMovieObj.Year != "" || typeof parseInt(newMovieObj.Year) === 'number') && 
+			(newMovieObj.IMDBrating != "" || typeof parseInt(newMovieObj.IMDBrating) === 'number'));
 }
 
 function saveMovie() {
@@ -72,22 +81,28 @@ function saveMovie() {
 	newMovieObj.Watched = $("#watched").val() === "on" ? 1 : 0;
 	newMovieObj.IMDBrating = $("#rating").val();
 
-	$.ajax({
-        url: "movies.php",
-        type: "POST",
-        data: { json: JSON.stringify(newMovieObj),
-        		func: "save" },
-        cache: false,
-        datatype: "json",
-        success: saveMovieOnSuccess
-    });
+	if (validateMovieObj(newMovieObj)) {
+		$.ajax({
+	        url: "movies.php",
+	        type: "POST",
+	        data: { json: JSON.stringify(newMovieObj),
+	        		func: "save" },
+	        cache: false,
+	        datatype: "json",
+	        success: saveMovieOnSuccess
+	    });
+	} else {
+		if ($("#newMovieBody label").children().length === 0) {
+			$("#newMovieBody label").append("<span> *</span>");
+		}
+	}
 }
 
 function saveMovieOnSuccess(response) {
 	togglePopUp("close");
 	var movie = JSON.parse(response)[0];
 	var mainBodyString = getMovieHtmlString(movie);
-	$("#main .container-fluid").prepend(mainBodyString);
+	$("#content .container-fluid").prepend(mainBodyString);
 	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
 }
 
