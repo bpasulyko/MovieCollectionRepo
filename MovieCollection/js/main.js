@@ -80,6 +80,7 @@ function saveMovie() {
 	newMovieObj.imageURL = "../img/" + $("#movieTitle").val().toLowerCase().replace(/[^\w\s]/gi, '').replace(/ /g,'') + ".png";
 	newMovieObj.Watched = $("#watched").val() === "on" ? 1 : 0;
 	newMovieObj.IMDBrating = $("#rating").val();
+	newMovieObj.DateAdded = new Date();
 
 	if (validateMovieObj(newMovieObj)) {
 		$.ajax({
