@@ -1,0 +1,15 @@
+div[data-movieId] {
+	height: 200px;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size:100% 100%;
+}
+
+body {
+	margin:0;
+	background-image: url("../img/curtain.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size:cover;
+	height:100%;
+}

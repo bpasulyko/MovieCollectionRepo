@@ -59,7 +59,12 @@ function buildMovieHtml(response) {
 function getMovieHtmlString(movie) {
 	var mainBodyString = "";
 	mainBodyString += "<div class='col-lg-2 col-sm-2 col-xs-2' data-movieId='" + movie.MovieId + "'>";
-	mainBodyString += "</div";
+	mainBodyString += "<div class='watchedIcon'><i class='fa fa-check'></i></div>";
+	mainBodyString += "<div class='hoverDiv'>";
+	mainBodyString += "<span>" + movie.Title + "</span>";
+	mainBodyString += "<i class='fa fa-play'></i>";
+	mainBodyString += "</div>";
+	mainBodyString += "</div>";
 	return mainBodyString;
 }
 
@@ -100,6 +105,7 @@ function saveMovie() {
 }
 
 function saveMovieOnSuccess(response) {
+	window.scrollTo(0, 0);
 	togglePopUp("close");
 	var movie = JSON.parse(response)[0];
 	var mainBodyString = getMovieHtmlString(movie);
@@ -122,6 +128,14 @@ $(document).on("click", "#saveMovie", function () {
 /***** GENERAL JQUERY *****/
 $(document).on("click", ".closePopUp", function () {
     togglePopUp("close");
+});
+
+$(document).on("mouseenter", "div[data-movieId]", function() {
+	$(this).children('.hoverDiv').show();
+});
+
+$(document).on("mouseleave", ".hoverDiv", function() {
+	$(".hoverDiv").hide();
 });
 
 $(document).ready(function () {

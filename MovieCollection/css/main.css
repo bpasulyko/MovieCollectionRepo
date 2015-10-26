@@ -75,11 +75,62 @@ img {
 }
 
 div[data-movieId] {
-	height: 350px;
+	height: 400px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     border: 10px solid rgba(255,0,0,0.4);
     box-shadow: 0 0 25px 10px black;
+    border-radius:20px;
+}
+
+div.hoverDiv {
+    background-color: black;
+    opacity: 0.8;
+    display:none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    text-align:center;
+    padding:10px;
+}
+
+div.hoverDiv span {
+    color: #AAAAAA;
+    font-size: 30px;
+    font-weight: bold;
+    position:relative;
+    top:10%;
+}
+
+div.hoverDiv i {
+	text-align:center;
+	width:75%;
+	background: #AAAAAA;
+    font-size: 30px;
+    border-radius:5px;
+    box-shadow: 0 0 7px black;
+    padding:10px 0;
+    position: absolute;
+    bottom: 15%;
+    left: 12.5%;
+    cursor:pointer;
+}
+
+.watchedIcon {
+	display:inline;
+	position:absolute;
+	bottom:10px;
+	right:10px;
+}
+
+.watchedIcon i {
+	background-color:green;
+	color:white;
+	border-radius:100%;
+	padding:7px;
+    box-shadow: 2px 2px 5px black;
+    border:2px solid white;
 }
 
 /********** HEADER CSS **********/
