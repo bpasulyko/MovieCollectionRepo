@@ -1,30 +1,11 @@
 /***********************************************************************************************************************/
 /************************************************** GLOBAL VARIABLES ***************************************************/
 /***********************************************************************************************************************/
+var newMovieCreator = new NewMovieCreator(saveMovieOnSuccess);
 
 /***************************************************************************************************************/
 /************************************************** FUNCTIONS **************************************************/
 /***************************************************************************************************************/
-function togglePopUp(state) {
-	resetInputs();
-	if (state === "open") {
-	    $("#darkDiv").removeClass("hidden");
-    	$("#newMovieDiv").removeClass("hidden");
-	} else {
-	    $("#darkDiv").addClass("hidden");
-    	$("#newMovieDiv").addClass("hidden");
-	}
-}
-
-function resetInputs() {
-	$("#movieTitle").val("");
-	$("#director").val("");
-	$("#genre option").first().prop("selected", "selected");
-	$("#year").val("");
-	$("#rating").val("");
-	$("#newMovieBody label span").remove();
-}
-
 function loadAllMovies() {
 	$.ajax({
         url: "movies.php",
@@ -68,45 +49,8 @@ function getMovieHtmlString(movie) {
 	return mainBodyString;
 }
 
-function validateMovieObj(newMovieObj) {
-	return (newMovieObj.Title != "" && 
-			newMovieObj.Director != "" && 
-			newMovieObj.Genre != ". . ." && 
-			(newMovieObj.Year != "" || typeof parseInt(newMovieObj.Year) === 'number') && 
-			(newMovieObj.IMDBrating != "" || typeof parseInt(newMovieObj.IMDBrating) === 'number'));
-}
-
-function saveMovie() {
-	var newMovieObj = {};
-	newMovieObj.Title = $("#movieTitle").val();
-	newMovieObj.Director = $("#director").val();
-	newMovieObj.Genre = $("#genre option:selected").val();
-	newMovieObj.Year = $("#year").val();
-	newMovieObj.imageURL = "../img/" + $("#movieTitle").val().toLowerCase().replace(/[^\w\s]/gi, '').replace(/ /g,'') + ".png";
-	newMovieObj.Watched = $("#watched").val() === "on" ? 1 : 0;
-	newMovieObj.IMDBrating = $("#rating").val();
-	newMovieObj.DateAdded = new Date();
-
-	if (validateMovieObj(newMovieObj)) {
-		$.ajax({
-	        url: "movies.php",
-	        type: "POST",
-	        data: { json: JSON.stringify(newMovieObj),
-	        		func: "save" },
-	        cache: false,
-	        datatype: "json",
-	        success: saveMovieOnSuccess
-	    });
-	} else {
-		if ($("#newMovieBody label").children().length === 0) {
-			$("#newMovieBody label").append("<span> *</span>");
-		}
-	}
-}
-
 function saveMovieOnSuccess(response) {
 	window.scrollTo(0, 0);
-	togglePopUp("close");
 	var movie = JSON.parse(response)[0];
 	var mainBodyString = getMovieHtmlString(movie);
 	$("#content .container-fluid").prepend(mainBodyString);
@@ -116,21 +60,14 @@ function saveMovieOnSuccess(response) {
 /************************************************************************************************************/
 /************************************************** EVENTS **************************************************/
 /************************************************************************************************************/
-/***** ADD A NEW MOVIE *****/
-$(document).on("click", "#newMovie", function () {
-	togglePopUp("open");
-});
-
-$(document).on("click", "#saveMovie", function () {
-	saveMovie();
-});
 
 /***** GENERAL JQUERY *****/
-$(document).on("click", ".closePopUp", function () {
-    togglePopUp("close");
+$(document).on("click", "#newMovie", function () {
+	newMovieCreator.init();
 });
 
 $(document).on("mouseenter", "div[data-movieId]", function() {
+	$(".hoverDiv").hide();
 	$(this).children('.hoverDiv').show();
 });
 

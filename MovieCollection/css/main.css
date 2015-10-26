@@ -158,8 +158,9 @@ div.hoverDiv i {
 	z-index: 1;
 }
 
-#newMovie {
-	cursor:pointer;
+.movieReel i {
+	font-size:50px;
+	cursor: pointer;
 }
 
 /********** NEW MOVIE CSS **********/
