@@ -19,6 +19,7 @@ function loadAllMovies() {
 
 function loadAllMoviesOnSuccess(response) {
 	buildMovieHtml(response);
+	$("#loadingDiv").delay(3000).fadeOut("slow");
 }
 
 function buildMovieHtml(response) {

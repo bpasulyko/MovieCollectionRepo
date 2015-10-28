@@ -45,6 +45,27 @@ body {
     position:absolute;
 }
 
+#loadingDiv {
+	background-color:black;
+    width:100%;
+    height:100%;
+    z-index:7;
+    position:absolute;
+    color:#AAAAAA;
+    font-size:50px;
+}
+
+#loadingDiv section {
+	position:absolute;
+    text-align:center;
+	top:40%;
+	width:100%;
+}
+
+#loadingDiv i {
+	font-size:100px;
+}
+
 .hidden {
     display:none;
 }
