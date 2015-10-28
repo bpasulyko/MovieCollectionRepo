@@ -75,7 +75,6 @@ NewMovieCreator = (function() {
 
 	$(document).on("click", "#saveMovie", function () {
 		saveMovie();
-		togglePopUp("close");
 	});
 
 	return newMovieCreator;

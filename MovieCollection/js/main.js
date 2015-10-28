@@ -56,6 +56,9 @@ function saveMovieOnSuccess(response) {
 	var mainBodyString = getMovieHtmlString(movie);
 	$("#content .container-fluid").prepend(mainBodyString);
 	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+
+	$("#darkDiv").addClass("hidden");
+	$("#newMovieDiv").addClass("hidden");
 }
 
 /************************************************************************************************************/

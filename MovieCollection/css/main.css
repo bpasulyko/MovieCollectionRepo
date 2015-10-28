@@ -60,6 +60,7 @@ body {
     text-align:center;
 	top:40%;
 	width:100%;
+    font-family: "Monoton", cursive;
 }
 
 #loadingDiv i {
@@ -105,8 +106,7 @@ div[data-movieId] {
 }
 
 div.hoverDiv {
-    background-color: black;
-    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.8);
     display:none;
     height: 100%;
     width: 100%;
@@ -119,7 +119,7 @@ div.hoverDiv {
 div.hoverDiv span {
     color: #AAAAAA;
     font-size: 30px;
-    font-weight: bold;
+    font-family: 'Special Elite', cursive;
     position:relative;
     top:10%;
 }
@@ -127,15 +127,18 @@ div.hoverDiv span {
 div.hoverDiv i {
 	text-align:center;
 	width:75%;
-	background: #AAAAAA;
+    background: rgba(170, 170, 170, 1);
     font-size: 30px;
     border-radius:5px;
-    box-shadow: 0 0 7px black;
     padding:10px 0;
     position: absolute;
     bottom: 15%;
     left: 12.5%;
     cursor:pointer;
+}
+
+div.hoverDiv i:hover {
+    box-shadow: 0 0 7px 7px #AAAAAA;
 }
 
 .watchedIcon {
@@ -167,7 +170,7 @@ div.hoverDiv i {
 	border:2px solid #787878;
 	text-align:center;
 	line-height: 90px;
-	font-family: 'Ewert', cursive;
+	font-family: 'Monoton', cursive;
 	font-size: 70px;
 	color:#AAAAAA;
     border-radius:15px;
@@ -214,6 +217,8 @@ div.hoverDiv i {
     border: 1px solid #AAAAAA;
     border-top: none;
     padding:20px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #titleDiv {	
