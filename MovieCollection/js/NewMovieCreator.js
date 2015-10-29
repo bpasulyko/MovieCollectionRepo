@@ -17,8 +17,8 @@ NewMovieCreator = (function() {
 		return (newMovieObj.Title != "" && 
 				newMovieObj.Director != "" && 
 				newMovieObj.Genre != ". . ." && 
-				(newMovieObj.Year != "" || typeof parseInt(newMovieObj.Year) === 'number') && 
-				(newMovieObj.IMDBrating != "" || typeof parseInt(newMovieObj.IMDBrating) === 'number'));
+				(newMovieObj.Year != "" && !isNaN(newMovieObj.Year)) && 
+				(newMovieObj.IMDBrating != "" && !isNaN(newMovieObj.IMDBrating)));
 	}
 
 	function saveMovie() {

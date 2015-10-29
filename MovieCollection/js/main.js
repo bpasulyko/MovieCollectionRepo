@@ -1,11 +1,23 @@
 /***********************************************************************************************************************/
 /************************************************** GLOBAL VARIABLES ***************************************************/
 /***********************************************************************************************************************/
+var movieListObj;
 var newMovieCreator = new NewMovieCreator(saveMovieOnSuccess);
+var movieDetails;
 
 /***************************************************************************************************************/
 /************************************************** FUNCTIONS **************************************************/
 /***************************************************************************************************************/
+function getMovieById(movieId) {
+	var movie;
+	movieListObj.forEach(function(val){
+		if (val.MovieId == movieId) {
+			movie = val;
+		}
+	})
+	return movie;
+}
+
 function loadAllMovies() {
 	$.ajax({
         url: "movies.php",
@@ -18,6 +30,7 @@ function loadAllMovies() {
 }
 
 function loadAllMoviesOnSuccess(response) {
+	movieListObj = JSON.parse(response);
 	buildMovieHtml(response);
 	$("#loadingDiv").delay(3000).fadeOut("slow");
 }
@@ -77,6 +90,10 @@ $(document).on("mouseenter", "div[data-movieId]", function() {
 
 $(document).on("mouseleave", ".hoverDiv", function() {
 	$(".hoverDiv").hide();
+});
+
+$(document).on("click", ".hoverDiv i", function(){
+	movieDetails = new MovieDetails(getMovieById($(this).parents("[data-movieId]").attr("data-movieId")));
 });
 
 $(document).ready(function () {
