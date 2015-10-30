@@ -18,6 +18,10 @@ function getMovieById(movieId) {
 	return movie;
 }
 
+function updateMovieListObj(movie) {
+	movieListObj.push(movie);
+}
+
 function loadAllMovies() {
 	$.ajax({
         url: "movies.php",
@@ -72,6 +76,8 @@ function saveMovieOnSuccess(response) {
 
 	$("#darkDiv").addClass("hidden");
 	$("#newMovieDiv").addClass("hidden");
+
+	updateMovieListObj(JSON.parse(response)[0]);
 }
 
 /************************************************************************************************************/

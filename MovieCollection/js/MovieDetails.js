@@ -37,6 +37,7 @@ MovieDetails = (function() {
 	}
 
 	function fillInMovieDetails() {
+		$("#loanedTo").text("");
 		$("#titleSpan").text(_movie.Title);
 		$("#yearSpan").text(" (" + _movie.Year + ")");
 		$("#directorSpan").text(_movie.Director);
