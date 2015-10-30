@@ -30,9 +30,32 @@
 
     <div id="movieDetailsDiv">
         <div id="detailsLeft">
+            <i class="fa fa-eject"></i>
             <img />
         </div>
         <div id="detailsRight">
+            <div id="detailsRightContent">
+                <div>
+                    <span id="titleSpan"></span><span id="yearSpan"></span>
+                </div>
+                <div>
+                    <span id="directedBySpan">Directed by:  </span><br />
+                    <span id="directorSpan"></span>
+                </div>
+                <div>
+                    <span id="genreSpan"></span>IMDb Rating:  <span id="imdbRatingSpan"></span>
+                </div>
+                <div>
+                    <span id="watchedSpan"><label for="watchedDetails">Watched?</label><input type="checkbox" id="watchedDetails"></span>
+                    <span id="loanedSpan"><label for="loanedOut">Loaned Out?</label><input type="checkbox" id="loanedOut"></span>
+                </div>
+                <div>
+                    <input id="loanedTo" type="text" placeholder="Who?" disabled />
+                </div>
+                <div id="updateMovieDiv">
+                    <i id="updateMovie" class="fa fa-forward"></i>
+                </div>
+            </div>
         </div>
     </div>
 
