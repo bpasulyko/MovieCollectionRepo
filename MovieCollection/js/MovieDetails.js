@@ -24,6 +24,8 @@ MovieDetails = (function() {
 	function bindEvents() {
 		$("#movieDetailsDiv").on("click", "#detailsLeft i", function () {
 			$("#movieDetailsDiv").fadeOut(1000);
+			$("#detailsLeft").children().hide();
+			$("#detailsRightContent").children().hide();
 		});
 
 		$("#movieDetailsDiv").on("click", "#loanedOut", function (){

@@ -9,8 +9,8 @@ NewMovieCreator = (function() {
 	}
 
 	function init(){
-		resetInputs();
 		togglePopUp("open");
+		$("#movieTitle").focus();
 	}
 
 	function validateMovieObj(newMovieObj) {
@@ -52,6 +52,7 @@ NewMovieCreator = (function() {
 		resetInputs();
 		if (state === "open") {
 		    $("#darkDiv").removeClass("hidden");
+		    $("#newMovieDiv").fadeIn(500);
 	    	$("#newMovieDiv").removeClass("hidden");
 		} else {
 		    $("#darkDiv").addClass("hidden");

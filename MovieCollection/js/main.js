@@ -68,7 +68,7 @@ function getMovieHtmlString(movie) {
 }
 
 function saveMovieOnSuccess(response) {
-	window.scrollTo(0, 0);
+	$("#content").scrollTop(0);
 	var movie = JSON.parse(response)[0];
 	var mainBodyString = getMovieHtmlString(movie);
 	$("#content .container-fluid").prepend(mainBodyString);
