@@ -480,3 +480,46 @@ div.hoverDiv i:hover {
 #updateMovieDiv {
     text-align: right;
 }
+
+/***** SEARCH FILTER BOX CSS *****/
+#searchFilterBoxDiv {
+    position: absolute;
+    z-index: 100;
+    background: black;
+    height: 0;
+    width: 0;
+    left: 105px;
+    top: 90px;
+    border-radius: 45px;
+    border: 0px solid #AAAAAA;
+    display:none;
+    border-top-left-radius: 0;
+    box-shadow: 0 0 20px 10px black;
+}
+
+#titleSearchOuterDiv {
+    border: 3px solid #AAAAAA;
+    border-radius: 40px;
+    padding: 5px 20px;
+    color: #AAAAAA;
+}
+
+#titleSearch {
+    width: 85%;
+    font-size: 25px;
+    background: black;
+    border: none;
+}
+
+#titleSearchOuterDiv i {
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+#titleSearch:focus {
+    outline:none;
+}
+
+#searchFilterBoxContent{
+    display:none;
+}
