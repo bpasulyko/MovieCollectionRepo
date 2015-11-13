@@ -1,27 +1,13 @@
 /***********************************************************************************************************************/
 /************************************************** GLOBAL VARIABLES ***************************************************/
 /***********************************************************************************************************************/
-var movieListObj;
+var movieList = new MovieList();
 var newMovieCreator = new NewMovieCreator(saveMovieOnSuccess);
 var movieDetails;
 
 /***************************************************************************************************************/
 /************************************************** FUNCTIONS **************************************************/
 /***************************************************************************************************************/
-function getMovieById(movieId) {
-	var movie;
-	movieListObj.forEach(function(val){
-		if (val.MovieId == movieId) {
-			movie = val;
-		}
-	})
-	return movie;
-}
-
-function updateMovieListObj(movie) {
-	movieListObj.push(movie);
-}
-
 function loadAllMovies() {
 	$.ajax({
         url: "movies.php",
@@ -34,13 +20,13 @@ function loadAllMovies() {
 }
 
 function loadAllMoviesOnSuccess(response) {
-	movieListObj = JSON.parse(response);
-	buildMovieHtml(response);
+	movieList.setMovieList(JSON.parse(response));
+	buildMovieHtml();
 	$("#loadingDiv").delay(3000).fadeOut("slow");
 }
 
-function buildMovieHtml(response) {
-	var sortedList = JSON.parse(response).sort(function compare(a,b) {
+function buildMovieHtml() {
+	var sortedList = movieList.getMovieList().sort(function compare(a,b) {
 	  if (a.Title < b.Title)
 	    return -1;
 	  if (a.Title > b.Title)
@@ -77,7 +63,7 @@ function saveMovieOnSuccess(response) {
 	$("#darkDiv").addClass("hidden");
 	$("#newMovieDiv").addClass("hidden");
 
-	updateMovieListObj(JSON.parse(response)[0]);
+	movieList.updateMovieList(JSON.parse(response)[0]);
 }
 
 function showSearchFilter() {
@@ -121,7 +107,7 @@ $(document).on("mouseleave", ".hoverDiv", function() {
 
 $(document).on("click", ".hoverDiv i", function(){
 	hideSearchFilter();
-	movieDetails = new MovieDetails(getMovieById($(this).parents("[data-movieId]").attr("data-movieId")));
+	movieDetails = new MovieDetails(movieList.getMovieById($(this).parents("[data-movieId]").attr("data-movieId")));
 });
 
 $(document).on("click", "#searchFilter", function() {
