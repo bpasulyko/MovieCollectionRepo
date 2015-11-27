@@ -26,13 +26,14 @@ MovieDetails = (function() {
 			$("#movieDetailsDiv").fadeOut(1000);
 			$("#detailsLeft").children().hide();
 			$("#detailsRightContent").children().hide();
+			$("#loanedTo").val("");
 		});
 
 		$("#movieDetailsDiv").on("click", "#loanedOut", function (){
 			if ($(this).is(':checked')) {
 		        $("#loanedTo").removeAttr("disabled");
 		    } else {
-		    	$("#loanedTo").text("");
+		    	$("#loanedTo").val("");
 		    	$("#loanedTo").attr("disabled", "disabled");
 		    }
 		});

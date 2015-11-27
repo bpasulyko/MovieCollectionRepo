@@ -27,15 +27,6 @@ body {
     right: 0px;    
 }
 
-/*#main {
-    width: 65%;
-    position: absolute;
-    left: 50%;
-    margin-left: -32.5%;
-    background-color: black;
-    padding:15px 0;
-} */
-
 #darkDiv {
 	background-color:black;
 	opacity: 0.7;
@@ -482,36 +473,35 @@ div.hoverDiv i:hover {
 }
 
 /***** SEARCH FILTER BOX CSS *****/
-#searchFilterBoxDiv {
+#searchBoxDiv {
     position: absolute;
     z-index: 100;
     background: black;
     height: 0;
     width: 0;
-    left: 105px;
-    top: 90px;
+    left: 260px;
+    top: 60px;
     border-radius: 45px;
     border: 0px solid #AAAAAA;
     display:none;
     border-top-left-radius: 0;
-    box-shadow: 0 0 20px 10px black;
+    box-shadow: 0 0 20px 10px black;    
+    font-family: 'Special Elite';    
+    font-size: 25px;
+    color: #AAAAAA;
 }
 
-#titleSearchOuterDiv {
-    border: 3px solid #AAAAAA;
-    border-radius: 40px;
-    padding: 5px 20px;
-    color: #AAAAAA;
+#filterOuterDiv {
+    padding-top:20px;
 }
 
 #titleSearch {
     width: 85%;
-    font-size: 25px;
     background: black;
     border: none;
 }
 
-#titleSearchOuterDiv i {
+#searchBoxDiv i {
     font-size: 20px;
     padding-right: 10px;
 }
@@ -520,6 +510,18 @@ div.hoverDiv i:hover {
     outline:none;
 }
 
-#searchFilterBoxContent{
+#searchBoxContent{
     display:none;
+}
+
+#genreFilter select {
+    width: 100%;
+    background: black;
+    border: 3px solid #aaa;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+#genreFilter select:focus{
+    outline:none;
 }

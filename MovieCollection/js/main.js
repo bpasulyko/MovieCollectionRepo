@@ -3,6 +3,7 @@
 /***********************************************************************************************************************/
 var movieList = new MovieList();
 var newMovieCreator = new NewMovieCreator(saveMovieOnSuccess);
+var searchBox = new SearchBox();
 var movieDetails;
 
 /***************************************************************************************************************/
@@ -66,33 +67,13 @@ function saveMovieOnSuccess(response) {
 	movieList.updateMovieList(JSON.parse(response)[0]);
 }
 
-function showSearchFilter() {
-	$("#searchFilterBoxContent").delay(470).fadeIn("fast");
-	$("#searchFilterBoxDiv").fadeIn("fast").animate({
-		width: "400px",
-		height: "600px",
-		padding: "20px",
-		borderWidth:"5px"
-	}, 500 );
-}
-
-function hideSearchFilter() {
-	$("#searchFilterBoxContent").fadeOut("fast");
-	$("#searchFilterBoxDiv").animate({
-		width: "0",
-		height: "0",
-		padding: "0px",
-		borderWidth:"0px"
-	}, 500 ).fadeOut("fast");
-}
-
 /************************************************************************************************************/
 /************************************************** EVENTS **************************************************/
 /************************************************************************************************************/
 
 /***** GENERAL JQUERY *****/
 $(document).on("click", "#newMovie", function () {
-	hideSearchFilter();
+	searchBox.hideSearchBox();
 	newMovieCreator.init();
 });
 
@@ -106,15 +87,15 @@ $(document).on("mouseleave", ".hoverDiv", function() {
 });
 
 $(document).on("click", ".hoverDiv i", function(){
-	hideSearchFilter();
+	searchBox.hideSearchBox();
 	movieDetails = new MovieDetails(movieList.getMovieById($(this).parents("[data-movieId]").attr("data-movieId")));
 });
 
-$(document).on("click", "#searchFilter", function() {
-	if ($("#searchFilterBoxDiv").is(":visible")) {
-		hideSearchFilter();
+$(document).on("click", "#search", function() {
+	if ($("#searchBoxDiv").is(":visible")) {
+		searchBox.hideSearchBox();
 	} else {
-		showSearchFilter();
+		searchBox.showSearchBox();
 	}
 });
 
