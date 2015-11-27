@@ -4,6 +4,7 @@
 var movieList = new MovieList();
 var newMovieCreator = new NewMovieCreator(saveMovieOnSuccess);
 var searchBox = new SearchBox();
+var filterBox = new FilterBox();
 var movieDetails;
 
 /***************************************************************************************************************/
@@ -98,6 +99,20 @@ $(document).on("click", "#search", function() {
 		searchBox.showSearchBox();
 	}
 });
+
+$(document).on("click", "#filter", function () {
+	if ($(".mainUlList").is(":visible")) {
+		filterBox.hideFilterBox();
+	} else {
+		filterBox.showFilterBox();
+	}
+});
+
+//extract
+$(document).on("click", ".ulSubList li", function () { 
+	$(".mainUlList").hide("slide", { direction: "up", easing:"easeOutBounce" }, "slow"); //extract
+});
+//extract
 
 $(document).ready(function () {
 	loadAllMovies();

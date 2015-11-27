@@ -514,14 +514,62 @@ div.hoverDiv i:hover {
     display:none;
 }
 
-#genreFilter select {
-    width: 100%;
-    background: black;
-    border: 3px solid #aaa;
-    padding: 10px;
-    border-radius: 30px;
+/*test*/
+ul {
+    list-style: none;
 }
 
-#genreFilter select:focus{
-    outline:none;
+#filterBoxDiv {
+    position: absolute;
+    top: 100px;
+    left:2px;
+    color: #AAA;
+    font-family: 'Special Elite';
+    font-size: 25px;
+}
+
+.mainUlList {
+    background-color:black;
+    z-index:100;
+    position:absolute;
+    padding:0;
+    line-height: 45px;    
+    display:none;
+}
+
+.mainUlList span {
+    padding: 0 25px;
+}
+
+.mainUlList li {
+    position: relative;
+    cursor:pointer;
+}
+
+.mainUlList li:hover {
+    background: #222
+}
+
+.ulSubList {
+    left: 100%;
+    top: 0;    
+    background-color:#222;
+    padding:0;
+    position:absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s linear;
+}
+
+.ulSubList li {    
+    padding: 5px 25px;
+}
+
+.ulSubList li:hover {
+    background: black;
+}
+
+li:hover > ul {
+    visibility: visible;
+    opacity: 1;
 }
