@@ -7,6 +7,7 @@ MovieList = (function() {
 		this.setMovieList = function(movieList) { _movieList = movieList; };
 		this.updateMovieList = function(newMovie) { _movieList.push(newMovie); }
 		this.getMovieById = getMovieById;
+		this.getMoviesByGenre = getMoviesByGenre;
 	}
 
 	function getMovieById(movieId) {
@@ -17,6 +18,12 @@ MovieList = (function() {
 			}
 		})
 		return movie;
+	}
+
+	function getMoviesByGenre(genre) {
+		return _movieList.filter(function(val) {
+			return val.Genre == genre;
+		});
 	}
 
 	return movieList;

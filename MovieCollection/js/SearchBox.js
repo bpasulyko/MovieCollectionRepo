@@ -1,8 +1,15 @@
 SearchBox = (function() {
 
 	function searchBox() {
-		this.showSearchBox = showSearchBox;
-		this.hideSearchBox = hideSearchBox;
+		this.toggleSearchBox = toggleSearchBox;
+	}
+
+	function toggleSearchBox(isVisible) {
+		if (isVisible) {
+			hideSearchBox();
+		} else {
+			showSearchBox();
+		}
 	}
 
 	function showSearchBox() {

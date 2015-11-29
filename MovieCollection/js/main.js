@@ -4,7 +4,7 @@
 var movieList = new MovieList();
 var newMovieCreator = new NewMovieCreator(saveMovieOnSuccess);
 var searchBox = new SearchBox();
-var filterBox = new FilterBox();
+var filterBox;
 var movieDetails;
 
 /***************************************************************************************************************/
@@ -25,6 +25,7 @@ function loadAllMoviesOnSuccess(response) {
 	movieList.setMovieList(JSON.parse(response));
 	buildMovieHtml();
 	$("#loadingDiv").delay(3000).fadeOut("slow");
+	filterBox = new FilterBox(movieList);
 }
 
 function buildMovieHtml() {
@@ -74,7 +75,8 @@ function saveMovieOnSuccess(response) {
 
 /***** GENERAL JQUERY *****/
 $(document).on("click", "#newMovie", function () {
-	searchBox.hideSearchBox();
+	searchBox.toggleSearchBox(true);
+	filterBox.toggleFilterBox(true);
 	newMovieCreator.init();
 });
 
@@ -88,31 +90,18 @@ $(document).on("mouseleave", ".hoverDiv", function() {
 });
 
 $(document).on("click", ".hoverDiv i", function(){
-	searchBox.hideSearchBox();
+	searchBox.toggleSearchBox(true);
+	filterBox.toggleFilterBox(true);
 	movieDetails = new MovieDetails(movieList.getMovieById($(this).parents("[data-movieId]").attr("data-movieId")));
 });
 
 $(document).on("click", "#search", function() {
-	if ($("#searchBoxDiv").is(":visible")) {
-		searchBox.hideSearchBox();
-	} else {
-		searchBox.showSearchBox();
-	}
+	searchBox.toggleSearchBox($("#searchBoxDiv").is(":visible"));
 });
 
 $(document).on("click", "#filter", function () {
-	if ($(".mainUlList").is(":visible")) {
-		filterBox.hideFilterBox();
-	} else {
-		filterBox.showFilterBox();
-	}
+	filterBox.toggleFilterBox($(".mainUlList").is(":visible"));
 });
-
-//extract
-$(document).on("click", ".ulSubList li", function () { 
-	$(".mainUlList").hide("slide", { direction: "up", easing:"easeOutBounce" }, "slow"); //extract
-});
-//extract
 
 $(document).ready(function () {
 	loadAllMovies();
