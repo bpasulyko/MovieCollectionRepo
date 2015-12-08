@@ -45,10 +45,10 @@ FilterBox = (function() {
 	}
 
 	function filterByGenre(genre) {
-		if (filterOption === "Any") {
+		if (genre === "Any") {
 			$("[data-movieId]").removeClass("hidden");
 		} else {
-			_movieList.getMoviesByGenre(filterOption).forEach(function(val) {
+			_movieList.getMoviesByGenre(genre).forEach(function(val) {
 				$("[data-movieId='" + val.MovieId + "']").removeClass("hidden");
 			});
 		}
