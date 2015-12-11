@@ -97,10 +97,12 @@ $(document).on("click", ".hoverDiv i", function(){
 
 $(document).on("click", "#search", function() {
 	searchBox.toggleSearchBox($("#searchBoxDiv").is(":visible"));
+	filterBox.toggleFilterBox(true);
 });
 
 $(document).on("click", "#filter", function () {
 	filterBox.toggleFilterBox($(".mainUlList").is(":visible"));
+	searchBox.toggleSearchBox(true);
 });
 
 $(document).ready(function () {

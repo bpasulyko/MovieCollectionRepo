@@ -59,10 +59,8 @@ FilterBox = (function() {
 		if (year === "Any") {
 			$("[data-movieId]").removeClass("hidden");
 		} else {
-			_movieList.getMovieList().forEach(function(val) {
-				if (val.Year >= selectedYear && val.Year <= (selectedYear + 9)) {
-					$("[data-movieId='" + val.MovieId + "']").removeClass("hidden");
-				}
+			_movieList.getMoviesByYear(year).forEach(function(val) {
+				$("[data-movieId='" + val.MovieId + "']").removeClass("hidden");
 			});
 		}
 	}

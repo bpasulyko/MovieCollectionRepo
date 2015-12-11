@@ -8,6 +8,7 @@ MovieList = (function() {
 		this.updateMovieList = function(newMovie) { _movieList.push(newMovie); }
 		this.getMovieById = getMovieById;
 		this.getMoviesByGenre = getMoviesByGenre;
+		this.getMoviesByYear = getMoviesByYear;
 	}
 
 	function getMovieById(movieId) {
@@ -23,6 +24,12 @@ MovieList = (function() {
 	function getMoviesByGenre(genre) {
 		return _movieList.filter(function(val) {
 			return val.Genre == genre;
+		});
+	}
+
+	function getMoviesByYear(year) {
+		return _movieList.filter(function(val) {
+			return val.Year >= selectedYear && val.Year <= (selectedYear + 9)
 		});
 	}
 
