@@ -9,15 +9,13 @@ MovieDetails = (function() {
 	}
 
 	function init() {
-		$("#detailsLeft img").attr("src", _movie.imageURL);
+		$("#detailsLeft").css("background-image", "url(" + _movie.imageURL + ")");		
 		fillInMovieDetails();
 
 		$("#movieDetailsDiv").fadeIn(2000, function (){  // 1.  fade in entire details div
-			$("#detailsLeft img").fadeIn(1500, function(){  // 2.  fade in cover image
-				$("#detailsRightContent").children().each(function(index) {  // 3.  fade in all children on right side
-					$(this).delay(500*index).fadeIn(1000);
-				}).promise().done(function () { $("#detailsLeft i").fadeIn(400); });
-			});
+			$("#detailsRightContent").children().each(function(index) {  // 2.  fade in all children on right side
+				$(this).delay(500*index).fadeIn(1000);
+			}).promise().done(function () { $("#detailsLeft i").fadeIn(400); });
 		});
 	}
 

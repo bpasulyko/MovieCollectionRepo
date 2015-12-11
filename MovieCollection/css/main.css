@@ -353,6 +353,7 @@ div.hoverDiv i:hover {
 
 #movieDetailsDiv i:hover{
     box-shadow: 0 0 5px 5px #AAAAAA;
+    opacity:1;
 }
 
 #detailsLeft {
@@ -361,6 +362,7 @@ div.hoverDiv i:hover {
     height: 100%;
     display:inline-block;
     left:0;
+    background-size: 100%;
 }
 
 #detailsLeft img {
@@ -381,10 +383,12 @@ div.hoverDiv i:hover {
     cursor: pointer;
     display:none;
     position:absolute;
+    opacity:0.7;
 }
 
 #detailsRight i {    
     margin-right: 50px;
+    opacity:0.7;
 }
 
 #detailsRight {
