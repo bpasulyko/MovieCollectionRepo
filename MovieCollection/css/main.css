@@ -24,7 +24,7 @@ body {
     bottom:0px;
     top:130px;
     left:0px;
-    right: 0px;    
+    right: 0px;
 }
 
 #darkDiv {
@@ -212,7 +212,7 @@ div.hoverDiv i:hover {
     overflow-x: hidden;
 }
 
-#titleDiv {	
+#titleDiv {
 	border-bottom:2px solid white;
     width: 100%;
     position: relative;
@@ -255,7 +255,7 @@ div.hoverDiv i:hover {
 #movieTitle {
 	font-size:70px;
 	resize:none;
-	width:85%;	
+	width:85%;
 }
 
 #directorDiv {
@@ -287,7 +287,7 @@ div.hoverDiv i:hover {
 
 #year, #rating{
 	font-size: 100px;
-    width: 100%;    
+    width: 100%;
 }
 
 #year {
@@ -386,7 +386,7 @@ div.hoverDiv i:hover {
     opacity:0.7;
 }
 
-#detailsRight i {    
+#detailsRight i {
     margin-right: 50px;
     opacity:0.7;
 }
@@ -477,6 +477,8 @@ div.hoverDiv i:hover {
 }
 
 /***** SEARCH FILTER BOX CSS *****/
+/*
+old search box
 #searchBoxDiv {
     position: absolute;
     z-index: 100;
@@ -489,20 +491,38 @@ div.hoverDiv i:hover {
     border: 0px solid #AAAAAA;
     display:none;
     border-top-left-radius: 0;
-    box-shadow: 0 0 20px 10px black;    
-    font-family: 'Special Elite';    
+    box-shadow: 0 0 20px 10px black;
+    font-family: 'Special Elite';
     font-size: 25px;
     color: #AAAAAA;
 }
 
-#filterOuterDiv {
-    padding-top:20px;
+#searchBoxContent{
+	display:none;
+}*/
+
+#searchBoxDiv {
+	position: absolute;
+	top: 100px;
+	left:122px;
+	color: #AAA;
+	font-family: 'Special Elite';
+	font-size: 25px;
+	z-index:100;
+	display:none;
+}
+
+#searchBoxContent {
+	border: 1px solid #AAA;
+	padding:5px 10px;
+	background-color:black;
 }
 
 #titleSearch {
     width: 85%;
     background: black;
     border: none;
+		position:relative;
 }
 
 #searchBoxDiv i {
@@ -512,10 +532,6 @@ div.hoverDiv i:hover {
 
 #titleSearch:focus {
     outline:none;
-}
-
-#searchBoxContent{
-    display:none;
 }
 
 /*test*/
@@ -537,8 +553,9 @@ ul {
     z-index:100;
     position:absolute;
     padding:0;
-    line-height: 45px;    
+    line-height: 45px;
     display:none;
+		border: 1px solid #AAA;
 }
 
 .mainUlList span {
@@ -556,7 +573,7 @@ ul {
 
 .ulSubList {
     left: 100%;
-    top: 0;    
+    top: 0;
     background-color:#222;
     padding:0;
     position:absolute;
@@ -565,7 +582,7 @@ ul {
     transition: visibility 0s, opacity 0.2s linear;
 }
 
-.ulSubList li {    
+.ulSubList li {
     padding: 5px 25px;
 }
 
