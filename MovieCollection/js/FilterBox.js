@@ -55,15 +55,15 @@ FilterBox = (function() {
 	}
 
 	function filterByYear(year) {
-		var selectedYear = parseInt(year.split("'")[0]);
 		if (year === "Any") {
 			$("[data-movieId]").removeClass("hidden");
 		} else {
-			_movieList.getMoviesByYear(year).forEach(function(val) {
+			var selectedYear = parseInt(year.split("'")[0]);
+			_movieList.getMoviesByYear(selectedYear).forEach(function(val) {
 				$("[data-movieId='" + val.MovieId + "']").removeClass("hidden");
 			});
 		}
 	}
-	
+
 	return filterBox;
 }());

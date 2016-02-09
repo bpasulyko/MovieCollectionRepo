@@ -29,7 +29,7 @@ MovieList = (function() {
 
 	function getMoviesByYear(year) {
 		return _movieList.filter(function(val) {
-			return val.Year >= selectedYear && val.Year <= (selectedYear + 9)
+			return val.Year >= year && val.Year <= (year + 9)
 		});
 	}
 
