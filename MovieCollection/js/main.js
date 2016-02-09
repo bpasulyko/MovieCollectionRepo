@@ -28,6 +28,17 @@ function loadAllMoviesOnSuccess(response) {
 	filterBox = new FilterBox(movieList);
 }
 
+// function loadAllMovies() {
+// 	var movieObjectList = [];
+// 	for (var i in localStorage) {
+// 		movieObjectList.push(JSON.parse(localStorage.getItem(i)));
+// 	}
+// 	movieList.setMovieList(movieObjectList);
+// 	buildMovieHtml();
+// 	$("#loadingDiv").delay(3000).fadeOut("slow");
+// 	filterBox = new FilterBox(movieList);
+// }
+
 function buildMovieHtml() {
 	var sortedList = movieList.getMovieList().sort(function compare(a,b) {
 	  if (a.Title < b.Title)
@@ -68,6 +79,18 @@ function saveMovieOnSuccess(response) {
 
 	movieList.updateMovieList(JSON.parse(response)[0]);
 }
+
+// function saveMovieOnSuccess(movie) {
+// 	$("#content").scrollTop(0);
+// 	var mainBodyString = getMovieHtmlString(movie);
+// 	$("#content .container-fluid").prepend(mainBodyString);
+// 	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+//
+// 	$("#darkDiv").addClass("hidden");
+// 	$("#newMovieDiv").addClass("hidden");
+//
+// 	movieList.updateMovieList(movie);
+// }
 
 /************************************************************************************************************/
 /************************************************** EVENTS **************************************************/

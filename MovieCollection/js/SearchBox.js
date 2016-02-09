@@ -12,7 +12,7 @@ SearchBox = (function() {
 		}
 	}
 
-	//old serach box
+	//old search box
 	// function showSearchBox() {
 	// $("#searchBoxContent").delay(470).fadeIn("fast");
 	// $("#searchBoxDiv").fadeIn("fast").animate({
@@ -39,7 +39,7 @@ SearchBox = (function() {
 	// }
 
 	function showSearchBox() {
-		$("#searchBoxDiv").show("slide",{ direction: "up", easing:"easeOutBounce" }, "slow")
+		$("#searchBoxDiv").show("slide",{ direction: "up", easing:"easeOutBounce" }, "slow");
 		$("#titleSearch").keyup(function(){
 		 		hideAllMovies();
 		 		showMoviesMatchingSearch($(this).val().toLowerCase());
@@ -47,7 +47,7 @@ SearchBox = (function() {
 	}
 
 	function hideSearchBox() {
-		$("#searchBoxDiv").hide("slide", { direction: "up", easing:"easeOutBounce" }, "slow")
+		$("#searchBoxDiv").hide("slide", { direction: "up", easing:"easeOutBounce" }, "slow");
 	}
 
 	function hideAllMovies() {

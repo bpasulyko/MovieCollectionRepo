@@ -14,10 +14,10 @@ NewMovieCreator = (function() {
 	}
 
 	function validateMovieObj(newMovieObj) {
-		return (newMovieObj.Title != "" && 
-				newMovieObj.Director != "" && 
-				newMovieObj.Genre != ". . ." && 
-				(newMovieObj.Year != "" && !isNaN(newMovieObj.Year)) && 
+		return (newMovieObj.Title != "" &&
+				newMovieObj.Director != "" &&
+				newMovieObj.Genre != ". . ." &&
+				(newMovieObj.Year != "" && !isNaN(newMovieObj.Year)) &&
 				(newMovieObj.IMDBrating != "" && !isNaN(newMovieObj.IMDBrating)));
 	}
 
@@ -30,8 +30,11 @@ NewMovieCreator = (function() {
 		newMovieObj.Watched = $("#watched").val() === "on" ? 1 : 0;
 		newMovieObj.IMDBrating = $("#rating").val();
 		newMovieObj.DateAdded = new Date();
+		//newMovieObj.MovieId = localStorage.length + 1;
 
 		if (validateMovieObj(newMovieObj)) {
+			// localStorage.setItem(newMovieObj.MovieId, JSON.stringify(newMovieObj));
+			// _saveMovieOnSuccess(newMovieObj);
 			$.ajax({
 		        url: "movies.php",
 		        type: "POST",
