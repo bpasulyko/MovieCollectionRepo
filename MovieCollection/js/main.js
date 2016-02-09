@@ -92,6 +92,24 @@ function saveMovieOnSuccess(response) {
 // 	movieList.updateMovieList(movie);
 // }
 
+function pickRandomMovie() {
+	$("#darkDiv").removeClass("hidden");
+	$("#randomMovieDiv section").show();
+	$("#closeRandomMovie").hide();
+	$("#randomMovieDiv").fadeIn(500);
+	$("#randomMovieDiv").removeClass("hidden");
+	var movieIdList = movieList.getMovieIds().sort(function(a,b) { return a-b; });
+	var low = movieIdList[0];
+	var high = movieIdList[movieIdList.length - 1];
+	var selectedMovieId = Math.floor(Math.random() * high) + low;
+	while ($.inArray(selectedMovieId, movieIdList) == -1) {
+		selectedMovieId = Math.floor(Math.random() * high) + low;
+	}
+	$("#randomMovieDiv section").delay(2000).fadeOut("slow");
+	$("#closeRandomMovie").delay(2500).fadeIn("fast");
+	$("#randomMovieDiv").css("background-image", "url('" + movieList.getMovieById(selectedMovieId).imageURL + "')");
+}
+
 /************************************************************************************************************/
 /************************************************** EVENTS **************************************************/
 /************************************************************************************************************/
@@ -101,6 +119,17 @@ $(document).on("click", "#newMovie", function () {
 	searchBox.toggleSearchBox(true);
 	filterBox.toggleFilterBox(true);
 	newMovieCreator.init();
+});
+
+$(document).on("click", "#pickMovie", function () {
+	searchBox.toggleSearchBox(true);
+	filterBox.toggleFilterBox(true);
+	pickRandomMovie();
+});
+
+$(document).on("click", "#randomMovieDiv .closePopUp", function () {
+		$("#darkDiv").addClass("hidden");
+		$("#randomMovieDiv").addClass("hidden");
 });
 
 $(document).on("mouseenter", "div[data-movieId]", function() {

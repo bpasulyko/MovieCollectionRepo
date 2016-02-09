@@ -62,10 +62,14 @@ body {
     display:none;
 }
 
-#closePopUpDiv {
+#closePopUpDiv, #closeRandomMovie {
     position: relative;
     top: -20px;
     right: -20px;
+}
+
+#closeRandomMovie {
+	display: none;
 }
 
 .closePopUp {
@@ -87,8 +91,36 @@ img {
     cursor:pointer;
 }
 
+#randomMovieDiv {
+	position:absolute;
+	width:350px;
+	z-index: 10;
+	height:500px;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	border:10px inset #AAA;
+	margin-left:-175px;
+	left:50%;
+	top: 10%;
+	text-align:center;
+}
+
+#randomMovieDiv section {
+	width:100%;
+	height:100%;
+	position:relative;
+	background-color:black;
+	color:#AAA;
+	font-size:85px;
+}
+
+#randomMovieDiv section i {
+	position:relative;
+	top:150px;
+}
+
 div[data-movieId] {
-	height: 400px;
+		height: 400px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     border: 10px solid rgba(255,0,0,0.4);

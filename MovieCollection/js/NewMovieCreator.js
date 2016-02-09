@@ -73,7 +73,7 @@ NewMovieCreator = (function() {
 	}
 
 	/***** EVENTS *****/
-	$(document).on("click", ".closePopUp", function () {
+	$(document).on("click", "#newMovieDiv .closePopUp", function () {
 	    togglePopUp("close");
 	});
 
