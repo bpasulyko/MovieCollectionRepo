@@ -502,20 +502,21 @@ old search box
 }*/
 
 #searchBoxDiv {
-	position: absolute;
-	top: 100px;
-	left:122px;
+	position: relative;
 	color: #AAA;
 	font-family: 'Special Elite';
 	font-size: 25px;
 	z-index:100;
 	display:none;
+	width:350px;
 }
 
 #searchBoxContent {
 	border: 1px solid #AAA;
 	padding:5px 10px;
 	background-color:black;
+	width:350px;
+	line-height:1.5;
 }
 
 #titleSearch {
@@ -540,9 +541,7 @@ ul {
 }
 
 #filterBoxDiv {
-    position: absolute;
-    top: 100px;
-    left:2px;
+    position: relative;
     color: #AAA;
     font-family: 'Special Elite';
     font-size: 25px;

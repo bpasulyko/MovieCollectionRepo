@@ -40,6 +40,7 @@ SearchBox = (function() {
 
 	function showSearchBox() {
 		$("#searchBoxDiv").show("slide",{ direction: "up", easing:"easeOutBounce" }, "slow");
+		$("#titleSearch").focus();
 		$("#titleSearch").keyup(function(){
 		 		hideAllMovies();
 		 		showMoviesMatchingSearch($(this).val().toLowerCase());

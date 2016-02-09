@@ -62,48 +62,6 @@
         </div>
     </div>
 
-    <div id="searchBoxDiv">
-        <div id="searchBoxContent">
-            <i class="fa fa-search"></i><input type="text" id="titleSearch" placeholder="Search" />
-        </div>
-    </div>
-
-    <div id="filterBoxDiv">
-        <ul id="filterByOptions" class="mainUlList">
-            <li>
-                <span>Genre</span>
-                <ul id="genreList" class="ulSubList">
-                    <li>Any</li>
-                    <li>Action/Adventure</li>
-                    <li>Animation</li>
-                    <li>Biography</li>
-                    <li>Comedy</li>
-                    <li>Crime</li>
-                    <li>Drama</li>
-                    <li>History</li>
-                    <li>Horror</li>
-                    <li>Sci-Fi/Fantasy</li>
-                    <li>Thriller</li>
-                    <li>War</li>
-                    <li>Western</li>
-                </ul>
-            </li>
-            <li>
-                <span>Year</span>
-                <ul id="yearList" class="ulSubList">
-                    <li>Any</li>
-                    <li>1950's</li>
-                    <li>1960's</li>
-                    <li>1970's</li>
-                    <li>1980's</li>
-                    <li>1990's</li>
-                    <li>2000's</li>
-                    <li>2010's</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
     <div id="newMovieDiv" class="hidden">
         <div id="newMovieHeader">
             <div id="closePopUpDiv"><i class="fa fa-times closePopUp"></i></div>
@@ -157,8 +115,52 @@
     <div id="header">
         <div class="movieReelBorder"></div>
         <div class="movieReel container-fluid">
-            <div id="filter" title="Filter" class="col-lg-1 col-sm-1 col-xs-1"><i class="fa fa-filter"></i></div>
-            <div id="search" title="Search" class="col-lg-1 col-sm-1 col-xs-1"><i class="fa fa-search"></i></div>
+            <div id="filter" title="Filter" class="col-lg-1 col-sm-1 col-xs-1">
+              <i class="fa fa-filter"></i>
+              <div id="filterBoxDiv">
+                  <ul id="filterByOptions" class="mainUlList">
+                      <li>
+                          <span>Genre</span>
+                          <ul id="genreList" class="ulSubList">
+                              <li>Any</li>
+                              <li>Action/Adventure</li>
+                              <li>Animation</li>
+                              <li>Biography</li>
+                              <li>Comedy</li>
+                              <li>Crime</li>
+                              <li>Drama</li>
+                              <li>History</li>
+                              <li>Horror</li>
+                              <li>Sci-Fi/Fantasy</li>
+                              <li>Thriller</li>
+                              <li>War</li>
+                              <li>Western</li>
+                          </ul>
+                      </li>
+                      <li>
+                          <span>Year</span>
+                          <ul id="yearList" class="ulSubList">
+                              <li>Any</li>
+                              <li>1950's</li>
+                              <li>1960's</li>
+                              <li>1970's</li>
+                              <li>1980's</li>
+                              <li>1990's</li>
+                              <li>2000's</li>
+                              <li>2010's</li>
+                          </ul>
+                      </li>
+                  </ul>
+              </div>
+            </div>
+            <div id="search" title="Search" class="col-lg-1 col-sm-1 col-xs-1">
+              <i class="fa fa-search"></i>
+              <div id="searchBoxDiv">
+                  <div id="searchBoxContent">
+                      <i class="fa fa-search"></i><input type="text" id="titleSearch" placeholder="Search" />
+                  </div>
+              </div>
+            </div>
             <div class="col-lg-1 col-sm-1 col-xs-1"></div>
             <div class="col-lg-1 col-sm-1 col-xs-1">M</div>
             <div class="col-lg-1 col-sm-1 col-xs-1">O</div>
