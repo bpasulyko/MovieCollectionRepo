@@ -63,10 +63,6 @@ body {
     padding-right: 10px;
 }
 
-#titleSearch:focus {
-    outline:none;
-}
-
 #viewOptions {
 	padding-top:15px;
 }
@@ -83,6 +79,21 @@ body {
 #viewOptions span.active {
 	background:#AAA;
 	color:black;
+}
+
+#filterDiv {
+	padding:10px;
+}
+
+#filterOptions {
+	background: black;
+	color: #AAA;
+	font-size: 25px;
+	font-family: 'Special Elite', cursive;
+	padding: 10px 15px;
+	border-radius: 25px;
+	width: 100%;
+	border: 2px solid #AAA;
 }
 /*LEFT NAV CSS*/
 
@@ -115,6 +126,12 @@ body {
 
 #loadingDiv i {
 	font-size:100px;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+	outline:0;
 }
 
 .hidden {
@@ -337,12 +354,6 @@ div.hoverDiv i:hover {
 	border:none;
 }
 
-#newMovieBody textarea:focus,
-#newMovieBody input:focus,
-#newMovieBody select:focus {
-	outline:0;
-}
-
 #movieTitle {
 	font-size:70px;
 	resize:none;
@@ -557,10 +568,6 @@ div.hoverDiv i:hover {
     color:white;
     border:none;
     font-size:25px;
-}
-
-#loanedTo:focus {
-    outline:0;
 }
 
 #updateMovieDiv {
