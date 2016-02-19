@@ -66,6 +66,24 @@ body {
 #titleSearch:focus {
     outline:none;
 }
+
+#viewOptions {
+	padding-top:15px;
+}
+
+#viewOptions span {
+	text-align:center;
+	border:2px solid #AAA;
+	color:#AAA;
+	font-size:30px;
+	padding:10px 0;
+	cursor:pointer;
+}
+
+#viewOptions span.active {
+	background:#AAA;
+	color:black;
+}
 /*LEFT NAV CSS*/
 
 #darkDiv {
