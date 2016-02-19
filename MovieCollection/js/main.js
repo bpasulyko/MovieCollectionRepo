@@ -12,7 +12,7 @@ var movieDetails;
 /***************************************************************************************************************/
 function loadAllMovies() {
 	$.ajax({
-        url: "movies.php",
+        url: "MovieCollection/htm/movies.php",
         type: "POST",
         data: {func: "loadAll"},
         cache: false,
@@ -51,7 +51,7 @@ function buildMovieHtml() {
 	sortedList.forEach(function(movie) {
 		var mainBodyString = getMovieHtmlString(movie);
 		$("#content .container-fluid").append(mainBodyString);
-		$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+		$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('MovieCollection/img/" + movie.imageURL + "')");
 	});
 }
 
@@ -72,7 +72,7 @@ function saveMovieOnSuccess(response) {
 	var movie = JSON.parse(response)[0];
 	var mainBodyString = getMovieHtmlString(movie);
 	$("#content .container-fluid").prepend(mainBodyString);
-	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('MovieCollection/img/" + movie.imageURL + "')");
 
 	$("#darkDiv").addClass("hidden");
 	$("#newMovieDiv").addClass("hidden");
@@ -84,7 +84,7 @@ function saveMovieOnSuccess(response) {
 // 	$("#content").scrollTop(0);
 // 	var mainBodyString = getMovieHtmlString(movie);
 // 	$("#content .container-fluid").prepend(mainBodyString);
-// 	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+// 	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('MovieCollection/img/" + movie.imageURL + "')");
 //
 // 	$("#darkDiv").addClass("hidden");
 // 	$("#newMovieDiv").addClass("hidden");
@@ -107,7 +107,7 @@ function pickRandomMovie() {
 	}
 	$("#randomMovieDiv section").delay(2000).fadeOut("slow");
 	$("#closeRandomMovie").delay(2500).fadeIn("fast");
-	$("#randomMovieDiv").css("background-image", "url('" + movieList.getMovieById(selectedMovieId).imageURL + "')");
+	$("#randomMovieDiv").css("background-image", "url('MovieCollection/img/" + movieList.getMovieById(selectedMovieId).imageURL + "')");
 }
 
 /************************************************************************************************************/
