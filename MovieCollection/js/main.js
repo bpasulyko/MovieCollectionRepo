@@ -50,7 +50,7 @@ function buildMovieHtml() {
 
 	sortedList.forEach(function(movie) {
 		var mainBodyString = getMovieHtmlString(movie);
-		$("#content .container-fluid").append(mainBodyString);
+		$("#content").append(mainBodyString);
 		$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
 	});
 }
@@ -71,7 +71,7 @@ function saveMovieOnSuccess(response) {
 	$("#content").scrollTop(0);
 	var movie = JSON.parse(response)[0];
 	var mainBodyString = getMovieHtmlString(movie);
-	$("#content .container-fluid").prepend(mainBodyString);
+	$("#content").prepend(mainBodyString);
 	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
 
 	$("#darkDiv").addClass("hidden");
@@ -83,7 +83,7 @@ function saveMovieOnSuccess(response) {
 // function saveMovieOnSuccess(movie) {
 // 	$("#content").scrollTop(0);
 // 	var mainBodyString = getMovieHtmlString(movie);
-// 	$("#content .container-fluid").prepend(mainBodyString);
+// 	$("#content").prepend(mainBodyString);
 // 	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
 //
 // 	$("#darkDiv").addClass("hidden");

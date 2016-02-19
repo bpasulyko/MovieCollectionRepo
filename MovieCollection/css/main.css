@@ -8,15 +8,22 @@ body {
 	height:100%;
 }
 
+#leftNavMenu {
+	position: relative;
+	width: 20%;
+	top: 0;
+	height: 100%;
+	background: black;
+	float: left;
+}
+
 #content {
-	position: absolute;
+	position: relative;
 	overflow-y: auto;
-	top: 0px;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-    height: 100%;
-    padding-top:15px;
+  height: 100%;
+  padding-top:15px;
+	float:right;
+	width:80%;auto;
 }
 
 #scrollContainer {
@@ -120,7 +127,7 @@ img {
 }
 
 div[data-movieId] {
-		height: 400px;
+		height: 320px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     border: 10px solid rgba(255,0,0,0.4);
