@@ -3,7 +3,7 @@
 /***********************************************************************************************************************/
 var movieList = new MovieList();
 var newMovieCreator = new NewMovieCreator(saveMovieOnSuccess);
-var searchBox = new SearchBox();
+var searchBox;
 var filterBox;
 var movieDetails;
 
@@ -116,13 +116,11 @@ function pickRandomMovie() {
 
 /***** GENERAL JQUERY *****/
 $(document).on("click", "#newMovie", function () {
-	searchBox.toggleSearchBox(true);
 	filterBox.toggleFilterBox(true);
 	newMovieCreator.init();
 });
 
 $(document).on("click", "#pickMovie", function () {
-	searchBox.toggleSearchBox(true);
 	filterBox.toggleFilterBox(true);
 	pickRandomMovie();
 });
@@ -142,21 +140,19 @@ $(document).on("mouseleave", ".hoverDiv", function() {
 });
 
 $(document).on("click", ".hoverDiv i", function(){
-	searchBox.toggleSearchBox(true);
 	filterBox.toggleFilterBox(true);
 	movieDetails = new MovieDetails(movieList.getMovieById($(this).parents("[data-movieId]").attr("data-movieId")));
 });
 
 $(document).on("click", "#search", function() {
-	searchBox.toggleSearchBox($("#searchBoxDiv").is(":visible"));
 	filterBox.toggleFilterBox(true);
 });
 
 $(document).on("click", "#filter", function () {
 	filterBox.toggleFilterBox($(".mainUlList").is(":visible"));
-	searchBox.toggleSearchBox(true);
 });
 
 $(document).ready(function () {
 	loadAllMovies();
+	searchBox = new SearchBox();
 });

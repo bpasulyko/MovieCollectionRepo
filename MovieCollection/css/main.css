@@ -8,15 +8,6 @@ body {
 	height:100%;
 }
 
-#leftNavMenu {
-	position: relative;
-	width: 20%;
-	top: 0;
-	height: 100%;
-	background: black;
-	float: left;
-}
-
 #content {
 	position: relative;
 	overflow-y: auto;
@@ -33,6 +24,49 @@ body {
     left:0px;
     right: 0px;
 }
+
+/*LEFT NAV CSS*/
+#leftNavMenu {
+	position: relative;
+	width: 20%;
+	top: 0;
+	height: 100%;
+	background: black;
+	float: left;
+}
+
+#searchBoxDiv {
+	position: relative;
+	color: #AAA;
+	font-family: 'Special Elite';
+	font-size: 25px;
+	width: 100%;
+	padding: 20px 10px 10px 10px;
+}
+
+#searchBoxContent {
+	background-color: black;
+  border: 2px solid #AAA;
+  border-radius: 35px;
+  padding: 5px 15px;
+}
+
+#titleSearch {
+    width: 85%;
+    background: black;
+    border: none;
+		position:relative;
+}
+
+#searchBoxDiv i {
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+#titleSearch:focus {
+    outline:none;
+}
+/*LEFT NAV CSS*/
 
 #darkDiv {
 	background-color:black;
@@ -513,65 +547,6 @@ div.hoverDiv i:hover {
 
 #updateMovieDiv {
     text-align: right;
-}
-
-/***** SEARCH FILTER BOX CSS *****/
-/*
-old search box
-#searchBoxDiv {
-    position: absolute;
-    z-index: 100;
-    background: black;
-    height: 0;
-    width: 0;
-    left: 260px;
-    top: 60px;
-    border-radius: 45px;
-    border: 0px solid #AAAAAA;
-    display:none;
-    border-top-left-radius: 0;
-    box-shadow: 0 0 20px 10px black;
-    font-family: 'Special Elite';
-    font-size: 25px;
-    color: #AAAAAA;
-}
-
-#searchBoxContent{
-	display:none;
-}*/
-
-#searchBoxDiv {
-	position: relative;
-	color: #AAA;
-	font-family: 'Special Elite';
-	font-size: 25px;
-	z-index:100;
-	display:none;
-	width:350px;
-}
-
-#searchBoxContent {
-	border: 1px solid #AAA;
-	padding:5px 10px;
-	background-color:black;
-	width:350px;
-	line-height:1.5;
-}
-
-#titleSearch {
-    width: 85%;
-    background: black;
-    border: none;
-		position:relative;
-}
-
-#searchBoxDiv i {
-    font-size: 20px;
-    padding-right: 10px;
-}
-
-#titleSearch:focus {
-    outline:none;
 }
 
 /*test*/
