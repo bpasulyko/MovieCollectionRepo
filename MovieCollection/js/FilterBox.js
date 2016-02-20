@@ -4,36 +4,77 @@ FilterBox = (function() {
 
 	function filterBox(movieList) {
 		_movieList = movieList;
-		this.toggleFilterBox = toggleFilterBox;
 		bindEvents();
 	}
 
 	function bindEvents() {
-		$("#filterBoxDiv").on("click", ".ulSubList li", function () {
-			toggleFilterBox(true);
+		$("#filterDiv").on("click", ".filterSubOptions li", function () {
+			$(".filterSubOptions li").removeClass("active");
+			$(this).addClass("active");
 			hideAllMovies();
-			showMoviesMatchingFilter($(this).parent().siblings("span").text(), $(this).text());
+			showMoviesMatchingFilter($(".filterOptions.open").text(), $(this).text());
+		});
+
+		$("#filterDiv").on("click", "#clearFilter span", function () {
+			showAllMovies();
+			hideGenreOptions();
+			hideYearOptions()
+			$(".filterSubOptions li").removeClass("active");
+		});
+
+		$("#filterDiv").on("click", ".filterOptions", function () {
+			if ($(this).text() === "Genre") {
+				toggleGenreOptions($(this));
+			} else {
+				toggleYearOptions($(this));
+			}
 		});
 	}
 
-	function toggleFilterBox(isVisible) {
-		if (isVisible) {
-			hideFilterBox();
+	function toggleGenreOptions($option) {
+		if ($option.hasClass("open")) {
+			hideGenreOptions();
 		} else {
-			showFilterBox();
+			showGenreOptions();
+			hideYearOptions();
 		}
 	}
 
-	function showFilterBox() {
-		$(".mainUlList").show("slide",{ direction: "up", easing:"easeOutBounce" }, "slow");
+	function hideGenreOptions() {
+		$("#genreFilterOptions").slideUp('fast');
+		$("#genreOption").removeClass("open");
 	}
 
-	function hideFilterBox() {
-		$(".mainUlList").hide("slide", { direction: "up", easing:"easeOutBounce" }, "slow");
+	function showGenreOptions() {
+		$("#genreFilterOptions").slideDown('fast');
+		$("#genreOption").addClass("open");
+	}
+
+	function toggleYearOptions($option) {
+		if ($option.hasClass("open")) {
+			hideYearOptions();
+		} else {
+			showYearOptions();
+			hideGenreOptions();
+		}
+	}
+
+	function hideYearOptions() {
+		$("#yearFilterOptions").slideUp('fast');
+		$("#yearOption").removeClass("open");
+	}
+
+	function showYearOptions() {
+		$("#yearFilterOptions").slideDown('fast');
+		$("#yearOption").addClass("open");
 	}
 
 	function hideAllMovies() {
 		$("[data-movieId]").addClass("hidden");
+	}
+
+	function showAllMovies() {
+		$("[data-movieId]").removeClass("hidden");
 	}
 
 	function showMoviesMatchingFilter(filterType, filterOption) {

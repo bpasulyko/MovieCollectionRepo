@@ -118,6 +118,27 @@ body {
 	background: #AAA;
 	color: #222;
 }
+
+#clearFilter {
+	padding-top: 40px;
+  text-align: center;
+}
+
+#clearFilter span {
+	background: #222;
+	color: #AAA;
+	padding: 15px 50px;
+	font-size: 25px;
+	border-radius: 35px;
+	font-family: 'Special Elite', cursive;
+	box-shadow: inset 0px 0px 10px 2px black;
+	cursor: pointer;
+}
+
+#clearFilter span:hover {
+	background:#AAA;
+	color:#222;
+}
 /*LEFT NAV CSS*/
 
 #darkDiv {
@@ -595,63 +616,4 @@ div.hoverDiv i:hover {
 
 #updateMovieDiv {
     text-align: right;
-}
-
-/*test*/
-ul {
-    list-style: none;
-}
-
-#filterBoxDiv {
-    position: relative;
-    color: #AAA;
-    font-family: 'Special Elite';
-    font-size: 25px;
-}
-
-.mainUlList {
-    background-color:black;
-    z-index:100;
-    position:absolute;
-    padding:0;
-    line-height: 45px;
-    display:none;
-		border: 1px solid #AAA;
-}
-
-.mainUlList span {
-    padding: 0 25px;
-}
-
-.mainUlList li {
-    position: relative;
-    cursor:pointer;
-}
-
-.mainUlList li:hover {
-    background: #222
-}
-
-.ulSubList {
-    left: 100%;
-    top: 0;
-    background-color:#222;
-    padding:0;
-    position:absolute;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.2s linear;
-}
-
-.ulSubList li {
-    padding: 5px 25px;
-}
-
-.ulSubList li:hover {
-    background: black;
-}
-
-li:hover > ul {
-    visibility: visible;
-    opacity: 1;
 }
