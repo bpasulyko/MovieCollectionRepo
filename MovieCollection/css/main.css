@@ -41,11 +41,11 @@ body {
 	font-family: 'Special Elite';
 	font-size: 25px;
 	width: 100%;
-	padding: 20px 10px 10px 10px;
+	padding: 20px 10px;
 }
 
 #searchBoxContent {
-	background-color: black;
+	background-color: #222;
   border: 2px solid #AAA;
   border-radius: 35px;
   padding: 5px 15px;
@@ -53,7 +53,7 @@ body {
 
 #titleSearch {
     width: 85%;
-    background: black;
+    background: #222;
     border: none;
 		position:relative;
 }
@@ -69,11 +69,12 @@ body {
 
 #viewOptions span {
 	text-align:center;
-	border:2px solid #AAA;
+	background:#222;
 	color:#AAA;
 	font-size:30px;
 	padding:10px 0;
 	cursor:pointer;
+  box-shadow: inset 0px 0px 15px 0px black;
 }
 
 #viewOptions span.active {
@@ -82,18 +83,40 @@ body {
 }
 
 #filterDiv {
-	padding:10px;
+
 }
 
-#filterOptions {
-	background: black;
-	color: #AAA;
+.filterOptions {
+	padding: 10px 20px;
 	font-size: 25px;
 	font-family: 'Special Elite', cursive;
-	padding: 10px 15px;
-	border-radius: 25px;
-	width: 100%;
-	border: 2px solid #AAA;
+	color: #aaa;
+	background: #222;
+	cursor: pointer;
+  box-shadow: inset 0px -5px 20px 2px black;
+}
+
+.filterSubOptions {
+	display:none;
+}
+
+.filterSubOptions ul {
+	padding:0;
+	margin:0;
+}
+
+.filterSubOptions li {
+	padding: 6px 50px;
+	font-size: 16px;
+	font-family: 'Special Elite', cursive;
+	color: #AAA;
+	box-shadow: inset -2px -5px 15px 0px #222;
+	cursor: pointer;
+}
+
+#filterDiv .active {
+	background: #AAA;
+	color: #222;
 }
 /*LEFT NAV CSS*/
 
@@ -272,7 +295,7 @@ div.hoverDiv i:hover {
 	font-family: 'Monoton', cursive;
 	font-size: 70px;
 	color:#AAAAAA;
-    border-radius:15px;
+  border-radius:15px;
 }
 
 .movieReel.container-fluid {

@@ -144,12 +144,54 @@ $(document).on("click", ".hoverDiv i", function(){
 	movieDetails = new MovieDetails(movieList.getMovieById($(this).parents("[data-movieId]").attr("data-movieId")));
 });
 
-$(document).on("click", "#search", function() {
-	filterBox.toggleFilterBox(true);
-});
-
 $(document).on("click", "#filter", function () {
 	filterBox.toggleFilterBox($(".mainUlList").is(":visible"));
+});
+
+function toggleGenreOptions($option) {
+	if ($option.hasClass("open")) {
+		hideGenreOptions();
+	} else {
+		showGenreOptions();
+		hideYearOptions();
+	}
+}
+
+function hideGenreOptions() {
+	$("#genreFilterOptions").slideUp('fast');
+	$("#genreOption").removeClass("open");
+}
+
+function showGenreOptions() {
+	$("#genreFilterOptions").slideDown('fast');
+	$("#genreOption").addClass("open");
+}
+
+function toggleYearOptions($option) {
+	if ($option.hasClass("open")) {
+		hideYearOptions();
+	} else {
+		showYearOptions();
+		hideGenreOptions();
+	}
+}
+
+function hideYearOptions() {
+	$("#yearFilterOptions").slideUp('fast');
+	$("#yearOption").removeClass("open");
+}
+
+function showYearOptions() {
+	$("#yearFilterOptions").slideDown('fast');
+	$("#yearOption").addClass("open");
+}
+
+$(document).on("click", ".filterOptions", function () {
+	if ($(this).text() === "Genre") {
+		toggleGenreOptions($(this));
+	} else {
+		toggleYearOptions($(this));
+	}
 });
 
 $(document).ready(function () {
