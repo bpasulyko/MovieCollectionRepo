@@ -26,8 +26,10 @@ FilterBox = (function() {
 		$("#filterDiv").on("click", ".filterOptions", function () {
 			if ($(this).text() === "Genre") {
 				toggleGenreOptions($(this));
-			} else {
+			} else if ($(this).text() === "Year") {
 				toggleYearOptions($(this));
+			} else {
+				toggleSortOptions($(this));
 			}
 		});
 	}
@@ -38,6 +40,7 @@ FilterBox = (function() {
 		} else {
 			showGenreOptions();
 			hideYearOptions();
+			hideSortOptions();
 		}
 	}
 
@@ -57,6 +60,7 @@ FilterBox = (function() {
 		} else {
 			showYearOptions();
 			hideGenreOptions();
+			hideSortOptions();
 		}
 	}
 
@@ -68,6 +72,26 @@ FilterBox = (function() {
 	function showYearOptions() {
 		$("#yearFilterOptions").slideDown('fast');
 		$("#yearOption").addClass("open");
+	}
+
+	function toggleSortOptions($option) {
+		if ($option.hasClass("open")) {
+			hideSortOptions();
+		} else {
+			showSortOptions();
+			hideGenreOptions();
+			hideYearOptions();
+		}
+	}
+
+	function hideSortOptions() {
+		$("#sortFilterOptions").slideUp('fast');
+		$("#sortOption").removeClass("open");
+	}
+
+	function showSortOptions() {
+		$("#sortFilterOptions").slideDown('fast');
+		$("#sortOption").addClass("open");
 	}
 
 	function hideAllMovies() {

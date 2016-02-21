@@ -80,7 +80,7 @@ body {
 
 #viewOptions span.active {
 	background:#AAA;
-	color:black;
+	color:#222;
 }
 
 #filterDiv {
@@ -118,6 +118,7 @@ body {
 #filterDiv .active {
 	background: #AAA;
 	color: #222;
+	font-weight:bold;
 }
 
 #clearFilter {
