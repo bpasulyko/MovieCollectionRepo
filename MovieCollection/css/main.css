@@ -33,6 +33,7 @@ body {
 	height: 100%;
 	background: black;
 	float: left;
+	overflow-y:auto;
 }
 
 #searchBoxDiv {

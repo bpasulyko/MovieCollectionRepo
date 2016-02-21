@@ -20,6 +20,7 @@ FilterBox = (function() {
 			hideGenreOptions();
 			hideYearOptions()
 			$(".filterSubOptions li").removeClass("active");
+			$("#titleSearch").val("");
 		});
 
 		$("#filterDiv").on("click", ".filterOptions", function () {

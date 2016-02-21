@@ -40,15 +40,7 @@ function loadAllMoviesOnSuccess(response) {
 // }
 
 function buildMovieHtml() {
-	var sortedList = movieList.getMovieList().sort(function compare(a,b) {
-	  if (a.Title < b.Title)
-	    return -1;
-	  if (a.Title > b.Title)
-	    return 1;
-	  return 0;
-	});
-
-	sortedList.forEach(function(movie) {
+	movieList.getMovieList().forEach(function(movie) {
 		var mainBodyString = getMovieHtmlString(movie);
 		$("#content").append(mainBodyString);
 		$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
@@ -139,6 +131,12 @@ $(document).on("mouseleave", ".hoverDiv", function() {
 
 $(document).on("click", ".hoverDiv i", function(){
 	movieDetails = new MovieDetails(movieList.getMovieById($(this).parents("[data-movieId]").attr("data-movieId")));
+});
+
+$(document).on("click", "#viewOptions span", function () {
+	$("#viewOptions span").removeClass("active");
+	$(this).addClass("active");
+	//change views
 });
 
 $(document).ready(function () {
