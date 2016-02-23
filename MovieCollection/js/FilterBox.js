@@ -1,9 +1,11 @@
 FilterBox = (function() {
 
 	var _movieList;
+	var _rebuildMovieGrid;
 
-	function filterBox(movieList) {
+	function filterBox(movieList, rebuildMovieGrid) {
 		_movieList = movieList;
+		_rebuildMovieGrid = rebuildMovieGrid;
 		bindEvents();
 	}
 
@@ -12,14 +14,17 @@ FilterBox = (function() {
 			$(".filterSubOptions li").removeClass("active");
 			$(this).addClass("active");
 			hideAllMovies();
-			showMoviesMatchingFilter($(".filterOptions.open").text(), $(this).text());
+			showMoviesMatchingFilter($(".filterOptions.open").text(), $(this));
 		});
 
 		$("#filterDiv").on("click", "#clearFilter span", function () {
-			showAllMovies();
+			sortMovieListBy("Title", "sort-asc");
+			_rebuildMovieGrid();
 			hideGenreOptions();
-			hideYearOptions()
+			hideYearOptions();
+			hideSortOptions();
 			$(".filterSubOptions li").removeClass("active");
+			$(".filterSubOptions i").remove();
 			$("#titleSearch").val("");
 		});
 
@@ -104,31 +109,34 @@ FilterBox = (function() {
 
 	function showMoviesMatchingFilter(filterType, filterOption) {
 		if (filterType === "Genre") {
-			filterByGenre(filterOption);
+			filterByGenre(filterOption.text());
 		} else if (filterType === "Year") {
-			filterByYear(filterOption);
+			filterByYear(filterOption.text());
+		} else {
+			sortMovieListBy(filterOption.attr("name"), filterOption.attr("sort-order"));
 		}
 	}
 
 	function filterByGenre(genre) {
-		if (genre === "Any") {
-			$("[data-movieId]").removeClass("hidden");
-		} else {
-			_movieList.getMoviesByGenre(genre).forEach(function(val) {
-				$("[data-movieId='" + val.MovieId + "']").removeClass("hidden");
-			});
-		}
+		_movieList.getMoviesByGenre(genre).forEach(function(val) {
+			$("[data-movieId='" + val.MovieId + "']").removeClass("hidden");
+		});
 	}
 
 	function filterByYear(year) {
-		if (year === "Any") {
-			$("[data-movieId]").removeClass("hidden");
-		} else {
-			var selectedYear = parseInt(year.split("'")[0]);
-			_movieList.getMoviesByYear(selectedYear).forEach(function(val) {
-				$("[data-movieId='" + val.MovieId + "']").removeClass("hidden");
-			});
-		}
+		var selectedYear = parseInt(year.split("'")[0]);
+		_movieList.getMoviesByYear(selectedYear).forEach(function(val) {
+			$("[data-movieId='" + val.MovieId + "']").removeClass("hidden");
+		});
+	}
+
+	function sortMovieListBy(sortOptionName, sortOrder) {
+		_movieList.sortMovieListBy(sortOptionName, sortOrder);
+		$(".filterSubOptions i").remove();
+		redrawMovieGrid();
+		$(".filterSubOptions li[name='" + sortOptionName + "']").append("<i class='fa fa-" + sortOrder + "'></i>");
+		sortOrder = sortOrder == "sort-asc" ? "sort-desc" : "sort-asc";
+		$(".filterSubOptions li[name='" + sortOptionName + "']").attr("sort-order", sortOrder);
 	}
 
 	return filterBox;

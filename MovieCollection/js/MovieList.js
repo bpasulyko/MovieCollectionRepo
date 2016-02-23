@@ -10,6 +10,7 @@ MovieList = (function() {
 		this.getMoviesByGenre = getMoviesByGenre;
 		this.getMoviesByYear = getMoviesByYear;
 		this.getMovieIds = getMovieIds;
+		this.sortMovieListBy = sortMovieListBy;
 	}
 
 	function getMovieById(movieId) {
@@ -40,6 +41,28 @@ MovieList = (function() {
 			movieIdList.push(parseInt(val.MovieId));
 		});
 		return movieIdList;
+	}
+
+	function sortMovieListBy(sortOption, order) {
+		if (order === "sort-asc") {
+			_movieList.sort(function(a,b){
+				if (a[sortOption] < b[sortOption])
+			    return -1;
+			  else if (a[sortOption] > b[sortOption])
+			    return 1;
+			  else
+			    return 0;
+			});
+		} else {
+			_movieList.sort(function(a,b){
+				if (a[sortOption] < b[sortOption])
+			    return 1;
+			  else if (a[sortOption] > b[sortOption])
+			    return -1;
+			  else
+			    return 0;
+			});
+		}
 	}
 
 	return movieList;

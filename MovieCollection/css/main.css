@@ -47,14 +47,14 @@ body {
 
 #searchBoxContent {
 	background-color: #222;
-  border: 2px solid #AAA;
   border-radius: 35px;
   padding: 5px 15px;
+  box-shadow: inset 0px -5px 20px 2px black;
 }
 
 #titleSearch {
     width: 85%;
-    background: #222;
+    background: transparent;
     border: none;
 		position:relative;
 }
@@ -84,7 +84,7 @@ body {
 }
 
 #filterDiv {
-
+	padding: 0px 10px;
 }
 
 .filterOptions {
@@ -95,6 +95,7 @@ body {
 	background: #222;
 	cursor: pointer;
   box-shadow: inset 0px -5px 20px 2px black;
+  border-radius: 20px;
 }
 
 .filterSubOptions {
@@ -102,8 +103,9 @@ body {
 }
 
 .filterSubOptions ul {
-	padding:0;
+	padding:0px 15px;
 	margin:0;
+	list-style: none;
 }
 
 .filterSubOptions li {
@@ -113,6 +115,11 @@ body {
 	color: #AAA;
 	box-shadow: inset -2px -5px 15px 0px #222;
 	cursor: pointer;
+  border-radius: 10px;
+}
+
+.filterSubOptions i {
+	float:right;
 }
 
 #filterDiv .active {

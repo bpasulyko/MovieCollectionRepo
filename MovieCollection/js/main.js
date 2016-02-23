@@ -25,7 +25,7 @@ function loadAllMoviesOnSuccess(response) {
 	movieList.setMovieList(JSON.parse(response));
 	buildMovieHtml();
 	$("#loadingDiv").delay(3000).fadeOut("slow");
-	filterBox = new FilterBox(movieList);
+	filterBox = new FilterBox(movieList, redrawMovieGrid);
 }
 
 // function loadAllMovies() {
@@ -45,6 +45,11 @@ function buildMovieHtml() {
 		$("#content").append(mainBodyString);
 		$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
 	});
+}
+
+function redrawMovieGrid() {
+	$("#content").children().remove();
+	buildMovieHtml();
 }
 
 function getMovieHtmlString(movie) {
