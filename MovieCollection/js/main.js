@@ -5,7 +5,6 @@ var movieList = new MovieList();
 var newMovieCreator = new NewMovieCreator(saveMovieOnSuccess);
 var searchBox;
 var filterBox;
-var movieDetails;
 
 /***************************************************************************************************************/
 /************************************************** FUNCTIONS **************************************************/
@@ -62,7 +61,7 @@ function buildGridView() {
 
 function getMovieHtmlString(movie) {
 	var mainBodyString = `
-	<div class='col-xs-2' data-movieId='${movie.MovieId}'>
+	<div class='col-xs-2' data-movieId='${movie.MovieId}' data-title='${movie.Title}'>
 		<div class='infoIcon'><i class='fa fa-info-circle'></i></div>
 		<div class='watchedIcon'><i class='fa fa-check'></i></div>
 		<div class='movieDetails'>
@@ -139,25 +138,12 @@ $(document).on("click", "#randomMovieDiv .closePopUp", function () {
 		$("#randomMovieDiv").addClass("hidden");
 });
 
-$(document).on("mouseenter", "div[data-movieId]", function() {
-	$(".hoverDiv").hide();
-	$(this).children('.hoverDiv').show();
-});
-
-$(document).on("mouseleave", ".hoverDiv", function() {
-	$(".hoverDiv").hide();
-});
-
 $(document).on("mouseenter", ".infoIcon", function () {
 	$(this).siblings(".movieDetails").fadeIn("fast");
 });
 
 $(document).on("mouseleave", ".infoIcon", function () {
 	$(this).siblings(".movieDetails").fadeOut("fast");
-});
-
-$(document).on("click", ".hoverDiv i", function(){
-	movieDetails = new MovieDetails(movieList.getMovieById($(this).parents("[data-movieId]").attr("data-movieId")));
 });
 
 $(document).on("click", "#viewOptions span", function () {

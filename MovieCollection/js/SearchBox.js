@@ -18,7 +18,7 @@ SearchBox = (function() {
 
 	function showMoviesMatchingSearch(searchString) {
 		$("[data-movieId]").each(function(){
-			if ($(this).children('.hoverDiv').children('span').text().toLowerCase().indexOf(searchString) != -1) {
+			if ($(this).attr('data-title').toLowerCase().indexOf(searchString) != -1) {
 				$(this).removeClass("hidden");
 			}
 		});
