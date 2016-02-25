@@ -39,7 +39,20 @@ function loadAllMoviesOnSuccess(response) {
 // 	filterBox = new FilterBox(movieList);
 // }
 
+function redrawMovieGrid() {
+	$("#content").children().remove();
+	buildMovieHtml();
+}
+
 function buildMovieHtml() {
+	if (true) {
+		buildGridView();
+	} else {
+		buildListView();
+	}
+}
+
+function buildGridView() {
 	movieList.getMovieList().forEach(function(movie) {
 		var mainBodyString = getMovieHtmlString(movie);
 		$("#content").append(mainBodyString);
@@ -47,22 +60,23 @@ function buildMovieHtml() {
 	});
 }
 
-function redrawMovieGrid() {
-	$("#content").children().remove();
-	buildMovieHtml();
-}
-
 function getMovieHtmlString(movie) {
-	var mainBodyString = "";
-	mainBodyString += "<div class='col-lg-2 col-sm-2 col-xs-2' data-movieId='" + movie.MovieId + "'>";
-	mainBodyString += "<div class='watchedIcon'><i class='fa fa-check'></i></div>";
-	mainBodyString += "<div class='hoverDiv'>";
-	mainBodyString += "<span>" + movie.Title + "</span>";
-	mainBodyString += "<i class='fa fa-play'></i>";
-	mainBodyString += "</div>";
-	mainBodyString += "</div>";
+	var mainBodyString = `
+	<div class='col-xs-2' data-movieId='${movie.MovieId}'>
+		<div class='infoIcon'><i class='fa fa-info-circle'></i></div>
+		<div class='watchedIcon'><i class='fa fa-check'></i></div>
+		<div class='movieDetails'>
+			<label>Released:</label>
+			<div class='year'>${movie.Year}</div>
+			<label>Directed by:</label>
+			<div class='director'>${movie.Director}</div>
+			<div class='rating'>${movie.IMDBrating}</div>
+		</div>
+	</div>`;
 	return mainBodyString;
 }
+
+function buildListView() {}
 
 function saveMovieOnSuccess(response) {
 	$("#content").scrollTop(0);
@@ -132,6 +146,14 @@ $(document).on("mouseenter", "div[data-movieId]", function() {
 
 $(document).on("mouseleave", ".hoverDiv", function() {
 	$(".hoverDiv").hide();
+});
+
+$(document).on("mouseenter", ".infoIcon", function () {
+	$(this).siblings(".movieDetails").fadeIn("fast");
+});
+
+$(document).on("mouseleave", ".infoIcon", function () {
+	$(this).siblings(".movieDetails").fadeOut("fast");
 });
 
 $(document).on("click", ".hoverDiv i", function(){
