@@ -249,13 +249,24 @@ img {
 }
 
 div[data-movieId] {
+	border: 10px solid rgba(255,0,0,0.4);
+	box-shadow: 0 0 25px 10px black;
+  border-radius:20px;
+}
+
+div.gridView[data-movieId] {
 		height: 320px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    border: 10px solid rgba(255,0,0,0.4);
-    box-shadow: 0 0 25px 10px black;
-    border-radius:20px;
 		padding:0;
+}
+
+div.listView[data-movieId] {
+	background: rgba(0,0,0,0.9);
+	color: #AAA;
+	font-family: 'Special Elite', cursive;
+	font-size: 35px;
+	padding: 15px 0;
 }
 
 .movieDetails {
@@ -308,7 +319,7 @@ div[data-movieId] {
 	font-size:20px;
 }
 
-.watchedIcon {
+.gridView .watchedIcon {
 	display:inline;
 	position:absolute;
 	bottom:10px;
@@ -316,7 +327,7 @@ div[data-movieId] {
 	z-index:5;
 }
 
-.watchedIcon i {
+.gridView .watchedIcon i {
 	background-color:green;
 	color:white;
 	border-radius:100%;
@@ -325,13 +336,17 @@ div[data-movieId] {
   border:2px solid white;
 }
 
+.listView .director {
+	font-size:20px;
+}
+
 /********** HEADER CSS **********/
 .movieReelBorder {
 	background-image: url("../img/movieReel.png");
 	height:15px;
 }
 
-.col-xs-1 {
+#header .col-xs-1 {
 	background-color: black;
 	background-size:100% 100%;
 	height:100px;

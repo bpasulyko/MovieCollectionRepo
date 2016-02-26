@@ -44,24 +44,27 @@ function redrawMovieGrid() {
 }
 
 function buildMovieHtml() {
-	if (true) {
-		buildGridView();
-	} else {
-		buildListView();
-	}
-}
-
-function buildGridView() {
+	var currentView = $("#viewOptions .active").attr("name");
 	movieList.getMovieList().forEach(function(movie) {
-		var mainBodyString = getMovieHtmlString(movie);
+		var mainBodyString = getMovieHtmlString(movie, currentView);
 		$("#content").append(mainBodyString);
-		$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+		if (currentView === "grid") {
+			$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+		}
 	});
 }
 
-function getMovieHtmlString(movie) {
-	var mainBodyString = `
-	<div class='col-xs-2' data-movieId='${movie.MovieId}' data-title='${movie.Title}'>
+function getMovieHtmlString(movie, currentView) {
+	if (currentView === "grid") {
+		return getHtmlForGridView(movie);
+	} else {
+		return getHtmlForListView(movie);
+	}
+}
+
+function getHtmlForGridView(movie) {
+	return `
+	<div class='gridView col-xs-2' data-movieId='${movie.MovieId}' data-title='${movie.Title}'>
 		<div class='infoIcon'><i class='fa fa-info-circle'></i></div>
 		<div class='watchedIcon'><i class='fa fa-check'></i></div>
 		<div class='movieDetails'>
@@ -72,17 +75,29 @@ function getMovieHtmlString(movie) {
 			<div class='rating'>${movie.IMDBrating}</div>
 		</div>
 	</div>`;
-	return mainBodyString;
 }
 
-function buildListView() {}
+function getHtmlForListView(movie) {
+	return `
+	<div class='listView container-fluid' data-movieId='${movie.MovieId}' data-title='${movie.Title}'>
+		<div class='col-xs-6'>${movie.Title} (${movie.Year})</div>
+		<div class='col-xs-4 director'>${movie.Director}</div>
+		<div class='col-xs-1'>${movie.IMDBrating}</div>
+		<div class='col-xs-1'>
+			<div class='watchedIcon'><i class='fa fa-check'></i></div>
+		</div>
+	</div>`;
+}
 
 function saveMovieOnSuccess(response) {
 	$("#content").scrollTop(0);
 	var movie = JSON.parse(response)[0];
-	var mainBodyString = getMovieHtmlString(movie);
+	var currentView = $("#viewOptions .active").attr("name");
+	var mainBodyString = getMovieHtmlString(movie, currentView);
 	$("#content").prepend(mainBodyString);
-	$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+	if (currentView === "grid") {
+		$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+	}
 
 	$("#darkDiv").addClass("hidden");
 	$("#newMovieDiv").addClass("hidden");
@@ -149,7 +164,8 @@ $(document).on("mouseleave", ".infoIcon", function () {
 $(document).on("click", "#viewOptions span", function () {
 	$("#viewOptions span").removeClass("active");
 	$(this).addClass("active");
-	//change views
+	$("#titleSearch").val("");
+	redrawMovieGrid();
 });
 
 $(document).ready(function () {
