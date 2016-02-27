@@ -50,6 +50,7 @@ function buildMovieHtml() {
 		$("#content").append(mainBodyString);
 		if (currentView === "grid") {
 			$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+			$(".gridView").height($(".gridView").outerWidth()*1.5);
 		}
 	});
 }
@@ -97,6 +98,7 @@ function saveMovieOnSuccess(response) {
 	$("#content").prepend(mainBodyString);
 	if (currentView === "grid") {
 		$("div[data-movieId='" + movie.MovieId + "'").css("background-image", "url('" + movie.imageURL + "')");
+		$(".gridView").height($(".gridView").outerWidth()*1.5);
 	}
 
 	$("#darkDiv").addClass("hidden");

@@ -1,4 +1,4 @@
-div[data-movieId] {
+div.gridView[data-movieId] {
 	height: 200px;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
@@ -12,8 +12,4 @@ body {
 	background-repeat: no-repeat;
 	background-size:cover;
 	height:100%;
-}
-
-#searchBoxDiv {
-	top:20px;
 }
